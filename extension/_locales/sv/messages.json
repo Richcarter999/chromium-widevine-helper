@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Laddar ned och slår på eller av Widevine CDM för Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Kontrollerar status..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Aktivera Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Aktiverat"
+  },
+  "summaryDisabled": {
+    "message": "Inaktiverat"
+  },
+  "summaryWorking": {
+    "message": "Arbetar"
+  },
+  "widevineEnabled": {
+    "message": "Widevine är aktiverat."
+  },
+  "widevineDisabled": {
+    "message": "Widevine är inaktiverat."
+  },
+  "enablingWidevine": {
+    "message": "Aktiverar Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Inaktiverar Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Widevine-insticksprogrammet laddas ned, vänta"
+  },
+  "extensionContactError": {
+    "message": "Kan inte kontakta Widevine-tillägget."
+  },
+  "extensionNoResponse": {
+    "message": "Widevine-tillägget svarade inte."
+  },
+  "installerContactError": {
+    "message": "Nedladdningen av Widevine misslyckades."
+  },
+  "installerNoResponse": {
+    "message": "Widevine-installationsprogrammet svarade inte."
+  },
+  "unknownCommand": {
+    "message": "Okänt Widevine-kommando."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin krävs"
+  },
+  "restartTitle": {
+    "message": "Starta om browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Den här webbplatsen kräver Google Widevine plugin för att spela upp DRM-skyddat innehåll"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Den här webbplatsen kräver Google Widevine plugin för att spela upp DRM-skyddat innehåll, men Google Widevine plugin-hjälpen är inte tillgänglig."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Den här webbplatsen kräver Google Widevine plugin för att spela upp DRM-skyddat innehåll. Starta om browser för att läsa in det aktiverade insticksprogrammet."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Den här webbplatsen kräver Google Widevine plugin för att spela upp DRM-skyddat innehåll. Aktivera Google Widevine plugin och starta sedan om browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Den här webbplatsen kräver Google Widevine plugin för att spela upp DRM-skyddat innehåll. Aktivera Google Widevine plugin för att ladda ned insticksprogrammet."
+  },
+  "enableButton": {
+    "message": "Aktivera"
+  },
+  "dismissButton": {
+    "message": "Stäng"
+  },
+  "workingButton": {
+    "message": "Arbetar"
+  },
+  "enableFailed": {
+    "message": "Widevine kunde inte aktiveras."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine är aktiverat. Starta om browser för att läsa in det."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine installerades. Starta om browser för att läsa in det."
+  },
+  "internetRequired": {
+    "message": "En internetanslutning krävs för att ladda ned Widevine-insticksprogrammet."
+  },
+  "downloadFailed": {
+    "message": "Nedladdningen av Widevine misslyckades."
+  },
+  "unsupportedArch": {
+    "message": "Google publicerar inte Linux Widevine CDM för den här arkitekturen."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Starta om"
+  },
+  "restartingBrowser": {
+    "message": "Webbläsaren startas om..."
+  },
+  "restartFailed": {
+    "message": "Webbläsaren kunde inte startas om."
+  },
+  "restartUnavailable": {
+    "message": "Webbläsaren kunde inte startas om automatiskt."
+  }
+}

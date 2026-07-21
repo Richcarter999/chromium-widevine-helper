@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Chromium க்கான Widevine CDM ஐ பதிவிறக்கி இயக்க அல்லது முடக்க செய்கிறது."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "நிலை சரிபார்க்கப்படுகிறது..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Widevine ஐ இயக்கு"
+  },
+  "summaryEnabled": {
+    "message": "இயக்கப்பட்டது"
+  },
+  "summaryDisabled": {
+    "message": "முடக்கப்பட்டது"
+  },
+  "summaryWorking": {
+    "message": "செயலில்"
+  },
+  "widevineEnabled": {
+    "message": "Widevine இயக்கப்பட்டுள்ளது."
+  },
+  "widevineDisabled": {
+    "message": "Widevine முடக்கப்பட்டுள்ளது."
+  },
+  "enablingWidevine": {
+    "message": "Widevine இயக்கப்படுகிறது..."
+  },
+  "disablingWidevine": {
+    "message": "Widevine முடக்கப்படுகிறது..."
+  },
+  "downloadingWidevine": {
+    "message": "Widevine செருகுநிரல் பதிவிறக்கப்படுகிறது, தயவுசெய்து காத்திருக்கவும்"
+  },
+  "extensionContactError": {
+    "message": "Widevine நீட்டிப்பை தொடர்பு கொள்ள முடியவில்லை."
+  },
+  "extensionNoResponse": {
+    "message": "Widevine நீட்டிப்பு பதிலளிக்கவில்லை."
+  },
+  "installerContactError": {
+    "message": "Widevine பதிவிறக்கம் தோல்வியடைந்தது."
+  },
+  "installerNoResponse": {
+    "message": "Widevine நிறுவி பதிலளிக்கவில்லை."
+  },
+  "unknownCommand": {
+    "message": "அறியாத Widevine கட்டளை."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin தேவை"
+  },
+  "restartTitle": {
+    "message": "browser ஐ மீண்டும் தொடங்குங்கள்"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "DRM பாதுகாக்கப்பட்ட உள்ளடக்கத்தை இயக்க இந்த தளத்திற்கு Google Widevine plugin தேவை"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "DRM பாதுகாக்கப்பட்ட உள்ளடக்கத்தை இயக்க இந்த தளத்திற்கு Google Widevine plugin தேவை, ஆனால் Google Widevine plugin உதவி கிடைக்கவில்லை."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "DRM பாதுகாக்கப்பட்ட உள்ளடக்கத்தை இயக்க இந்த தளத்திற்கு Google Widevine plugin தேவை. இயக்கப்பட்ட செருகுநிரலை ஏற்ற browser ஐ மீண்டும் தொடங்குங்கள்."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "DRM பாதுகாக்கப்பட்ட உள்ளடக்கத்தை இயக்க இந்த தளத்திற்கு Google Widevine plugin தேவை. Google Widevine plugin ஐ இயக்கி, பிறகு browser ஐ மீண்டும் தொடங்குங்கள்."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "DRM பாதுகாக்கப்பட்ட உள்ளடக்கத்தை இயக்க இந்த தளத்திற்கு Google Widevine plugin தேவை. செருகுநிரலை பதிவிறக்க Google Widevine plugin ஐ இயக்குங்கள்."
+  },
+  "enableButton": {
+    "message": "இயக்கு"
+  },
+  "dismissButton": {
+    "message": "மூடு"
+  },
+  "workingButton": {
+    "message": "செயலில்"
+  },
+  "enableFailed": {
+    "message": "Widevine ஐ இயக்க முடியவில்லை."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine இயக்கப்பட்டுள்ளது. அதை ஏற்ற browser ஐ மீண்டும் தொடங்குங்கள்."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine நிறுவப்பட்டது. அதை ஏற்ற browser ஐ மீண்டும் தொடங்குங்கள்."
+  },
+  "internetRequired": {
+    "message": "Widevine செருகுநிரலை பதிவிறக்க இணைய இணைப்பு தேவை."
+  },
+  "downloadFailed": {
+    "message": "Widevine பதிவிறக்கம் தோல்வியடைந்தது."
+  },
+  "unsupportedArch": {
+    "message": "இந்த கட்டமைப்பிற்கான Linux Widevine CDM ஐ Google வெளியிடவில்லை."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "மறுதொடக்கம்"
+  },
+  "restartingBrowser": {
+    "message": "உலாவி மறுதொடக்கம் செய்யப்படுகிறது..."
+  },
+  "restartFailed": {
+    "message": "உலாவியை மறுதொடக்கம் செய்ய முடியவில்லை."
+  },
+  "restartUnavailable": {
+    "message": "உலாவியை தானாக மறுதொடக்கம் செய்ய முடியவில்லை."
+  }
+}

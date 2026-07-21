@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Κάνει λήψη και ενεργοποιεί ή απενεργοποιεί το Widevine CDM για το Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Έλεγχος κατάστασης..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Ενεργοποίηση Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Ενεργό"
+  },
+  "summaryDisabled": {
+    "message": "Ανενεργό"
+  },
+  "summaryWorking": {
+    "message": "Σε εξέλιξη"
+  },
+  "widevineEnabled": {
+    "message": "Το Widevine είναι ενεργό."
+  },
+  "widevineDisabled": {
+    "message": "Το Widevine είναι ανενεργό."
+  },
+  "enablingWidevine": {
+    "message": "Ενεργοποίηση Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Απενεργοποίηση Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Γίνεται λήψη του πρόσθετου Widevine, περιμένετε"
+  },
+  "extensionContactError": {
+    "message": "Δεν είναι δυνατή η επικοινωνία με την επέκταση Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "Η επέκταση Widevine δεν αποκρίθηκε."
+  },
+  "installerContactError": {
+    "message": "Η λήψη του Widevine απέτυχε."
+  },
+  "installerNoResponse": {
+    "message": "Το πρόγραμμα εγκατάστασης Widevine δεν αποκρίθηκε."
+  },
+  "unknownCommand": {
+    "message": "Άγνωστη εντολή Widevine."
+  },
+  "noticeTitle": {
+    "message": "Απαιτείται Google Widevine plugin"
+  },
+  "restartTitle": {
+    "message": "Επανεκκινήστε το browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Αυτός ο ιστότοπος απαιτεί Google Widevine plugin για αναπαραγωγή περιεχομένου που προστατεύεται με DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Αυτός ο ιστότοπος απαιτεί Google Widevine plugin για αναπαραγωγή περιεχομένου που προστατεύεται με DRM, αλλά ο βοηθός Google Widevine plugin δεν είναι διαθέσιμος."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Αυτός ο ιστότοπος απαιτεί Google Widevine plugin για αναπαραγωγή περιεχομένου που προστατεύεται με DRM. Επανεκκινήστε το browser για να φορτωθεί το ενεργοποιημένο πρόσθετο."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Αυτός ο ιστότοπος απαιτεί Google Widevine plugin για αναπαραγωγή περιεχομένου που προστατεύεται με DRM. Ενεργοποιήστε το Google Widevine plugin και μετά επανεκκινήστε το browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Αυτός ο ιστότοπος απαιτεί Google Widevine plugin για αναπαραγωγή περιεχομένου που προστατεύεται με DRM. Ενεργοποιήστε το Google Widevine plugin για να γίνει λήψη του πρόσθετου."
+  },
+  "enableButton": {
+    "message": "Ενεργοποίηση"
+  },
+  "dismissButton": {
+    "message": "Κλείσιμο"
+  },
+  "workingButton": {
+    "message": "Σε εξέλιξη"
+  },
+  "enableFailed": {
+    "message": "Δεν ήταν δυνατή η ενεργοποίηση του Widevine."
+  },
+  "widevineEnabledRestart": {
+    "message": "Το Widevine είναι ενεργό. Επανεκκινήστε το browser για να φορτωθεί."
+  },
+  "widevineInstalledRestart": {
+    "message": "Το Widevine εγκαταστάθηκε. Επανεκκινήστε το browser για να φορτωθεί."
+  },
+  "internetRequired": {
+    "message": "Απαιτείται σύνδεση στο διαδίκτυο για τη λήψη του πρόσθετου Widevine."
+  },
+  "downloadFailed": {
+    "message": "Η λήψη του Widevine απέτυχε."
+  },
+  "unsupportedArch": {
+    "message": "Η Google δεν δημοσιεύει Linux Widevine CDM για αυτήν την αρχιτεκτονική."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Επανεκκίνηση"
+  },
+  "restartingBrowser": {
+    "message": "Γίνεται επανεκκίνηση του προγράμματος περιήγησης..."
+  },
+  "restartFailed": {
+    "message": "Δεν ήταν δυνατή η επανεκκίνηση του προγράμματος περιήγησης."
+  },
+  "restartUnavailable": {
+    "message": "Δεν ήταν δυνατή η αυτόματη επανεκκίνηση του προγράμματος περιήγησης."
+  }
+}

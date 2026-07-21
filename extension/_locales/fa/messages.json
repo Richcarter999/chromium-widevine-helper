@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Widevine CDM را برای Chromium دانلود می‌کند و آن را روشن یا خاموش می‌کند."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "در حال بررسی وضعیت..."
+  },
+  "toggleEnableWidevine": {
+    "message": "فعال کردن Widevine"
+  },
+  "summaryEnabled": {
+    "message": "فعال"
+  },
+  "summaryDisabled": {
+    "message": "غیرفعال"
+  },
+  "summaryWorking": {
+    "message": "در حال کار"
+  },
+  "widevineEnabled": {
+    "message": "Widevine فعال است."
+  },
+  "widevineDisabled": {
+    "message": "Widevine غیرفعال است."
+  },
+  "enablingWidevine": {
+    "message": "در حال فعال کردن Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "در حال غیرفعال کردن Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "افزونه Widevine در حال دانلود است، لطفاً صبر کنید"
+  },
+  "extensionContactError": {
+    "message": "امکان ارتباط با افزونه Widevine وجود ندارد."
+  },
+  "extensionNoResponse": {
+    "message": "افزونه Widevine پاسخی نداد."
+  },
+  "installerContactError": {
+    "message": "دانلود Widevine ناموفق بود."
+  },
+  "installerNoResponse": {
+    "message": "نصب‌کننده Widevine پاسخی نداد."
+  },
+  "unknownCommand": {
+    "message": "فرمان Widevine ناشناخته است."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin لازم است"
+  },
+  "restartTitle": {
+    "message": "browser را راه‌اندازی مجدد کنید"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "این سایت برای پخش محتوای محافظت‌شده با DRM به Google Widevine plugin نیاز دارد"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "این سایت برای پخش محتوای محافظت‌شده با DRM به Google Widevine plugin نیاز دارد، اما دستیار Google Widevine plugin در دسترس نیست."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "این سایت برای پخش محتوای محافظت‌شده با DRM به Google Widevine plugin نیاز دارد. برای بارگیری افزونه فعال‌شده، browser را راه‌اندازی مجدد کنید."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "این سایت برای پخش محتوای محافظت‌شده با DRM به Google Widevine plugin نیاز دارد. Google Widevine plugin را فعال کنید، سپس browser را راه‌اندازی مجدد کنید."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "این سایت برای پخش محتوای محافظت‌شده با DRM به Google Widevine plugin نیاز دارد. برای دانلود افزونه، Google Widevine plugin را فعال کنید."
+  },
+  "enableButton": {
+    "message": "فعال کردن"
+  },
+  "dismissButton": {
+    "message": "بستن"
+  },
+  "workingButton": {
+    "message": "در حال کار"
+  },
+  "enableFailed": {
+    "message": "Widevine فعال نشد."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine فعال است. برای بارگیری آن، browser را راه‌اندازی مجدد کنید."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine نصب شد. برای بارگیری آن، browser را راه‌اندازی مجدد کنید."
+  },
+  "internetRequired": {
+    "message": "برای دانلود افزونه Widevine به اتصال اینترنت نیاز است."
+  },
+  "downloadFailed": {
+    "message": "دانلود Widevine ناموفق بود."
+  },
+  "unsupportedArch": {
+    "message": "Google برای این معماری Linux Widevine CDM منتشر نمی‌کند."
+  },
+  "badgeOn": {
+    "message": "روشن"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "راه‌اندازی مجدد"
+  },
+  "restartingBrowser": {
+    "message": "مرورگر در حال راه‌اندازی مجدد است..."
+  },
+  "restartFailed": {
+    "message": "مرورگر راه‌اندازی مجدد نشد."
+  },
+  "restartUnavailable": {
+    "message": "راه‌اندازی مجدد خودکار مرورگر ممکن نیست."
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Prenese in vklopi ali izklopi Widevine CDM za Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Preverjanje stanja..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Omogoči Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Omogočeno"
+  },
+  "summaryDisabled": {
+    "message": "Onemogočeno"
+  },
+  "summaryWorking": {
+    "message": "Deluje"
+  },
+  "widevineEnabled": {
+    "message": "Widevine je omogočen."
+  },
+  "widevineDisabled": {
+    "message": "Widevine je onemogočen."
+  },
+  "enablingWidevine": {
+    "message": "Omogočanje Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Onemogočanje Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Vtičnik Widevine se prenaša, počakajte"
+  },
+  "extensionContactError": {
+    "message": "Ni mogoče vzpostaviti stika z razširitvijo Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "Razširitev Widevine se ni odzvala."
+  },
+  "installerContactError": {
+    "message": "Prenos Widevine ni uspel."
+  },
+  "installerNoResponse": {
+    "message": "Namestitveni program Widevine se ni odzval."
+  },
+  "unknownCommand": {
+    "message": "Neznan ukaz Widevine."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin je zahtevan"
+  },
+  "restartTitle": {
+    "message": "Znova zaženite browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "To spletno mesto zahteva Google Widevine plugin za predvajanje vsebine, zaščitene z DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "To spletno mesto zahteva Google Widevine plugin za predvajanje vsebine, zaščitene z DRM, vendar pomočnik Google Widevine plugin ni na voljo."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "To spletno mesto zahteva Google Widevine plugin za predvajanje vsebine, zaščitene z DRM. Znova zaženite browser, da se naloži omogočeni vtičnik."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "To spletno mesto zahteva Google Widevine plugin za predvajanje vsebine, zaščitene z DRM. Omogočite Google Widevine plugin in nato znova zaženite browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "To spletno mesto zahteva Google Widevine plugin za predvajanje vsebine, zaščitene z DRM. Omogočite Google Widevine plugin za prenos vtičnika."
+  },
+  "enableButton": {
+    "message": "Omogoči"
+  },
+  "dismissButton": {
+    "message": "Zapri"
+  },
+  "workingButton": {
+    "message": "Deluje"
+  },
+  "enableFailed": {
+    "message": "Widevine ni bilo mogoče omogočiti."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine je omogočen. Znova zaženite browser, da se naloži."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine je bil nameščen. Znova zaženite browser, da se naloži."
+  },
+  "internetRequired": {
+    "message": "Za prenos vtičnika Widevine je potrebna internetna povezava."
+  },
+  "downloadFailed": {
+    "message": "Prenos Widevine ni uspel."
+  },
+  "unsupportedArch": {
+    "message": "Google ne objavlja Linux Widevine CDM za to arhitekturo."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Znova zaženi"
+  },
+  "restartingBrowser": {
+    "message": "Brskalnik se znova zaganja..."
+  },
+  "restartFailed": {
+    "message": "Brskalnika ni bilo mogoče znova zagnati."
+  },
+  "restartUnavailable": {
+    "message": "Brskalnika ni bilo mogoče samodejno znova zagnati."
+  }
+}

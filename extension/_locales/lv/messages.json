@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Lejupielādē un ieslēdz vai izslēdz Widevine CDM pārlūkam Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Pārbauda statusu..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Iespējot Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Iespējots"
+  },
+  "summaryDisabled": {
+    "message": "Atspējots"
+  },
+  "summaryWorking": {
+    "message": "Darbojas"
+  },
+  "widevineEnabled": {
+    "message": "Widevine ir iespējots."
+  },
+  "widevineDisabled": {
+    "message": "Widevine ir atspējots."
+  },
+  "enablingWidevine": {
+    "message": "Iespējo Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Atspējo Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Widevine spraudnis tiek lejupielādēts, lūdzu, uzgaidiet"
+  },
+  "extensionContactError": {
+    "message": "Neizdevās sazināties ar Widevine paplašinājumu."
+  },
+  "extensionNoResponse": {
+    "message": "Widevine paplašinājums neatbildēja."
+  },
+  "installerContactError": {
+    "message": "Widevine lejupielāde neizdevās."
+  },
+  "installerNoResponse": {
+    "message": "Widevine instalētājs neatbildēja."
+  },
+  "unknownCommand": {
+    "message": "Nezināma Widevine komanda."
+  },
+  "noticeTitle": {
+    "message": "Nepieciešams Google Widevine plugin"
+  },
+  "restartTitle": {
+    "message": "Restartējiet browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Šai vietnei ir nepieciešams Google Widevine plugin, lai atskaņotu ar DRM aizsargātu saturu"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Šai vietnei ir nepieciešams Google Widevine plugin, lai atskaņotu ar DRM aizsargātu saturu, bet Google Widevine plugin palīgs nav pieejams."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Šai vietnei ir nepieciešams Google Widevine plugin, lai atskaņotu ar DRM aizsargātu saturu. Restartējiet browser, lai ielādētu iespējoto spraudni."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Šai vietnei ir nepieciešams Google Widevine plugin, lai atskaņotu ar DRM aizsargātu saturu. Iespējojiet Google Widevine plugin un pēc tam restartējiet browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Šai vietnei ir nepieciešams Google Widevine plugin, lai atskaņotu ar DRM aizsargātu saturu. Iespējojiet Google Widevine plugin, lai lejupielādētu spraudni."
+  },
+  "enableButton": {
+    "message": "Iespējot"
+  },
+  "dismissButton": {
+    "message": "Aizvērt"
+  },
+  "workingButton": {
+    "message": "Darbojas"
+  },
+  "enableFailed": {
+    "message": "Neizdevās iespējot Widevine."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine ir iespējots. Restartējiet browser, lai to ielādētu."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine ir instalēts. Restartējiet browser, lai to ielādētu."
+  },
+  "internetRequired": {
+    "message": "Lai lejupielādētu Widevine spraudni, nepieciešams interneta savienojums."
+  },
+  "downloadFailed": {
+    "message": "Widevine lejupielāde neizdevās."
+  },
+  "unsupportedArch": {
+    "message": "Google nepublicē Linux Widevine CDM šai arhitektūrai."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Restartēt"
+  },
+  "restartingBrowser": {
+    "message": "Pārlūkprogramma tiek restartēta..."
+  },
+  "restartFailed": {
+    "message": "Pārlūkprogrammu nevarēja restartēt."
+  },
+  "restartUnavailable": {
+    "message": "Pārlūkprogrammu nevarēja restartēt automātiski."
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Hupakua na kuwasha au kuzima Widevine CDM kwa Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Inakagua hali..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Washa Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Imewashwa"
+  },
+  "summaryDisabled": {
+    "message": "Imezimwa"
+  },
+  "summaryWorking": {
+    "message": "Inafanya kazi"
+  },
+  "widevineEnabled": {
+    "message": "Widevine imewashwa."
+  },
+  "widevineDisabled": {
+    "message": "Widevine imezimwa."
+  },
+  "enablingWidevine": {
+    "message": "Inawasha Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Inazima Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Programu-jalizi ya Widevine inapakuliwa, tafadhali subiri"
+  },
+  "extensionContactError": {
+    "message": "Haiwezi kuwasiliana na kiendelezi cha Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "Kiendelezi cha Widevine hakikujibu."
+  },
+  "installerContactError": {
+    "message": "Upakuaji wa Widevine umeshindwa."
+  },
+  "installerNoResponse": {
+    "message": "Kisakinishi cha Widevine hakikujibu."
+  },
+  "unknownCommand": {
+    "message": "Amri ya Widevine haijulikani."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin inahitajika"
+  },
+  "restartTitle": {
+    "message": "Anzisha upya browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Tovuti hii inahitaji Google Widevine plugin ili kucheza maudhui yaliyolindwa na DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Tovuti hii inahitaji Google Widevine plugin ili kucheza maudhui yaliyolindwa na DRM, lakini msaidizi wa Google Widevine plugin haipatikani."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Tovuti hii inahitaji Google Widevine plugin ili kucheza maudhui yaliyolindwa na DRM. Anzisha upya browser ili kupakia programu-jalizi iliyowashwa."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Tovuti hii inahitaji Google Widevine plugin ili kucheza maudhui yaliyolindwa na DRM. Washa Google Widevine plugin, kisha uanzishe upya browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Tovuti hii inahitaji Google Widevine plugin ili kucheza maudhui yaliyolindwa na DRM. Washa Google Widevine plugin ili kupakua programu-jalizi."
+  },
+  "enableButton": {
+    "message": "Washa"
+  },
+  "dismissButton": {
+    "message": "Funga"
+  },
+  "workingButton": {
+    "message": "Inafanya kazi"
+  },
+  "enableFailed": {
+    "message": "Widevine haikuweza kuwashwa."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine imewashwa. Anzisha upya browser ili kuipakia."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine imesakinishwa. Anzisha upya browser ili kuipakia."
+  },
+  "internetRequired": {
+    "message": "Muunganisho wa intaneti unahitajika ili kupakua programu-jalizi ya Widevine."
+  },
+  "downloadFailed": {
+    "message": "Upakuaji wa Widevine umeshindwa."
+  },
+  "unsupportedArch": {
+    "message": "Google haichapishi Linux Widevine CDM kwa usanifu huu."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Anzisha upya"
+  },
+  "restartingBrowser": {
+    "message": "Kivinjari kinaanzishwa upya..."
+  },
+  "restartFailed": {
+    "message": "Kivinjari hakikuweza kuanzishwa upya."
+  },
+  "restartUnavailable": {
+    "message": "Kivinjari hakikuweza kuanzishwa upya kiotomatiki."
+  }
+}

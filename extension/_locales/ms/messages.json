@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Memuat turun dan menghidupkan atau mematikan Widevine CDM untuk Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Menyemak status..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Dayakan Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Didayakan"
+  },
+  "summaryDisabled": {
+    "message": "Dilumpuhkan"
+  },
+  "summaryWorking": {
+    "message": "Bekerja"
+  },
+  "widevineEnabled": {
+    "message": "Widevine didayakan."
+  },
+  "widevineDisabled": {
+    "message": "Widevine dilumpuhkan."
+  },
+  "enablingWidevine": {
+    "message": "Mendayakan Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Melumpuhkan Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Pemalam Widevine sedang dimuat turun, sila tunggu"
+  },
+  "extensionContactError": {
+    "message": "Tidak dapat menghubungi sambungan Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "Sambungan Widevine tidak bertindak balas."
+  },
+  "installerContactError": {
+    "message": "Muat turun Widevine gagal."
+  },
+  "installerNoResponse": {
+    "message": "Pemasang Widevine tidak bertindak balas."
+  },
+  "unknownCommand": {
+    "message": "Perintah Widevine tidak diketahui."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin Diperlukan"
+  },
+  "restartTitle": {
+    "message": "Mulakan semula browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Laman ini memerlukan Google Widevine plugin untuk memainkan kandungan yang dilindungi DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Laman ini memerlukan Google Widevine plugin untuk memainkan kandungan yang dilindungi DRM, tetapi pembantu Google Widevine plugin tidak tersedia."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Laman ini memerlukan Google Widevine plugin untuk memainkan kandungan yang dilindungi DRM. Mulakan semula browser untuk memuatkan pemalam yang didayakan."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Laman ini memerlukan Google Widevine plugin untuk memainkan kandungan yang dilindungi DRM. Dayakan Google Widevine plugin, kemudian mulakan semula browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Laman ini memerlukan Google Widevine plugin untuk memainkan kandungan yang dilindungi DRM. Dayakan Google Widevine plugin untuk memuat turun pemalam."
+  },
+  "enableButton": {
+    "message": "Dayakan"
+  },
+  "dismissButton": {
+    "message": "Tutup"
+  },
+  "workingButton": {
+    "message": "Bekerja"
+  },
+  "enableFailed": {
+    "message": "Widevine tidak dapat didayakan."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine didayakan. Mulakan semula browser untuk memuatkannya."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine telah dipasang. Mulakan semula browser untuk memuatkannya."
+  },
+  "internetRequired": {
+    "message": "Sambungan internet diperlukan untuk memuat turun pemalam Widevine."
+  },
+  "downloadFailed": {
+    "message": "Muat turun Widevine gagal."
+  },
+  "unsupportedArch": {
+    "message": "Google tidak menerbitkan Linux Widevine CDM untuk seni bina ini."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Mulakan semula"
+  },
+  "restartingBrowser": {
+    "message": "Pelayar sedang dimulakan semula..."
+  },
+  "restartFailed": {
+    "message": "Pelayar tidak dapat dimulakan semula."
+  },
+  "restartUnavailable": {
+    "message": "Pelayar tidak dapat dimulakan semula secara automatik."
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Изтегля и включва или изключва Widevine CDM за Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Проверка на състоянието..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Включване на Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Включено"
+  },
+  "summaryDisabled": {
+    "message": "Изключено"
+  },
+  "summaryWorking": {
+    "message": "Работи"
+  },
+  "widevineEnabled": {
+    "message": "Widevine е включен."
+  },
+  "widevineDisabled": {
+    "message": "Widevine е изключен."
+  },
+  "enablingWidevine": {
+    "message": "Включване на Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Изключване на Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Плъгинът Widevine се изтегля, моля изчакайте"
+  },
+  "extensionContactError": {
+    "message": "Не може да се установи връзка с разширението Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "Разширението Widevine не отговори."
+  },
+  "installerContactError": {
+    "message": "Изтеглянето на Widevine не бе успешно."
+  },
+  "installerNoResponse": {
+    "message": "Инсталаторът на Widevine не отговори."
+  },
+  "unknownCommand": {
+    "message": "Непозната команда за Widevine."
+  },
+  "noticeTitle": {
+    "message": "Необходим е Google Widevine plugin"
+  },
+  "restartTitle": {
+    "message": "Рестартирайте browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Този сайт изисква Google Widevine plugin, за да възпроизвежда защитено с DRM съдържание"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Този сайт изисква Google Widevine plugin, за да възпроизвежда защитено с DRM съдържание, но помощникът на Google Widevine plugin не е наличен."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Този сайт изисква Google Widevine plugin, за да възпроизвежда защитено с DRM съдържание. Рестартирайте browser, за да се зареди включеният плъгин."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Този сайт изисква Google Widevine plugin, за да възпроизвежда защитено с DRM съдържание. Включете Google Widevine plugin, след това рестартирайте browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Този сайт изисква Google Widevine plugin, за да възпроизвежда защитено с DRM съдържание. Включете Google Widevine plugin, за да изтеглите плъгина."
+  },
+  "enableButton": {
+    "message": "Включване"
+  },
+  "dismissButton": {
+    "message": "Отхвърляне"
+  },
+  "workingButton": {
+    "message": "Работи"
+  },
+  "enableFailed": {
+    "message": "Widevine не можа да бъде включен."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine е включен. Рестартирайте browser, за да го заредите."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine беше инсталиран. Рестартирайте browser, за да го заредите."
+  },
+  "internetRequired": {
+    "message": "Необходима е интернет връзка, за да се изтегли плъгинът Widevine."
+  },
+  "downloadFailed": {
+    "message": "Изтеглянето на Widevine не бе успешно."
+  },
+  "unsupportedArch": {
+    "message": "Google не публикува Linux Widevine CDM за тази архитектура."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Рестартиране"
+  },
+  "restartingBrowser": {
+    "message": "Браузърът се рестартира..."
+  },
+  "restartFailed": {
+    "message": "Браузърът не можа да бъде рестартиран."
+  },
+  "restartUnavailable": {
+    "message": "Браузърът не можа да бъде рестартиран автоматично."
+  }
+}

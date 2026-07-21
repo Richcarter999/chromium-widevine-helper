@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "מוריד ומפעיל או מכבה את Widevine CDM עבור Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "בודק מצב..."
+  },
+  "toggleEnableWidevine": {
+    "message": "הפעלת Widevine"
+  },
+  "summaryEnabled": {
+    "message": "מופעל"
+  },
+  "summaryDisabled": {
+    "message": "מושבת"
+  },
+  "summaryWorking": {
+    "message": "בעבודה"
+  },
+  "widevineEnabled": {
+    "message": "Widevine מופעל."
+  },
+  "widevineDisabled": {
+    "message": "Widevine מושבת."
+  },
+  "enablingWidevine": {
+    "message": "מפעיל את Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "משבית את Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "תוסף Widevine יורד כעת, נא להמתין"
+  },
+  "extensionContactError": {
+    "message": "לא ניתן ליצור קשר עם תוסף Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "תוסף Widevine לא הגיב."
+  },
+  "installerContactError": {
+    "message": "הורדת Widevine נכשלה."
+  },
+  "installerNoResponse": {
+    "message": "מתקין Widevine לא הגיב."
+  },
+  "unknownCommand": {
+    "message": "פקודת Widevine לא מוכרת."
+  },
+  "noticeTitle": {
+    "message": "נדרש Google Widevine plugin"
+  },
+  "restartTitle": {
+    "message": "הפעל מחדש את browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "אתר זה דורש Google Widevine plugin כדי להפעיל תוכן מוגן DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "אתר זה דורש Google Widevine plugin כדי להפעיל תוכן מוגן DRM, אך מסייע Google Widevine plugin אינו זמין."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "אתר זה דורש Google Widevine plugin כדי להפעיל תוכן מוגן DRM. הפעל מחדש את browser כדי לטעון את התוסף שהופעל."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "אתר זה דורש Google Widevine plugin כדי להפעיל תוכן מוגן DRM. הפעל את Google Widevine plugin ואז הפעל מחדש את browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "אתר זה דורש Google Widevine plugin כדי להפעיל תוכן מוגן DRM. הפעל את Google Widevine plugin כדי להוריד את התוסף."
+  },
+  "enableButton": {
+    "message": "הפעל"
+  },
+  "dismissButton": {
+    "message": "סגור"
+  },
+  "workingButton": {
+    "message": "בעבודה"
+  },
+  "enableFailed": {
+    "message": "לא ניתן היה להפעיל את Widevine."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine מופעל. הפעל מחדש את browser כדי לטעון אותו."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine הותקן. הפעל מחדש את browser כדי לטעון אותו."
+  },
+  "internetRequired": {
+    "message": "נדרש חיבור לאינטרנט כדי להוריד את תוסף Widevine."
+  },
+  "downloadFailed": {
+    "message": "הורדת Widevine נכשלה."
+  },
+  "unsupportedArch": {
+    "message": "Google אינה מפרסמת Linux Widevine CDM עבור ארכיטקטורה זו."
+  },
+  "badgeOn": {
+    "message": "פועל"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "הפעלה מחדש"
+  },
+  "restartingBrowser": {
+    "message": "הדפדפן מופעל מחדש..."
+  },
+  "restartFailed": {
+    "message": "לא ניתן היה להפעיל מחדש את הדפדפן."
+  },
+  "restartUnavailable": {
+    "message": "לא ניתן להפעיל מחדש את הדפדפן באופן אוטומטי."
+  }
+}

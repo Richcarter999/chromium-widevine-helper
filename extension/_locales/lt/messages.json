@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Atsiunčia ir įjungia arba išjungia Widevine CDM naršyklei Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Tikrinama būsena..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Įjungti Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Įjungta"
+  },
+  "summaryDisabled": {
+    "message": "Išjungta"
+  },
+  "summaryWorking": {
+    "message": "Vykdoma"
+  },
+  "widevineEnabled": {
+    "message": "Widevine įjungtas."
+  },
+  "widevineDisabled": {
+    "message": "Widevine išjungtas."
+  },
+  "enablingWidevine": {
+    "message": "Įjungiamas Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Išjungiamas Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Atsisiunčiamas Widevine papildinys, palaukite"
+  },
+  "extensionContactError": {
+    "message": "Nepavyko susisiekti su Widevine plėtiniu."
+  },
+  "extensionNoResponse": {
+    "message": "Widevine plėtinys neatsakė."
+  },
+  "installerContactError": {
+    "message": "Widevine atsisiuntimas nepavyko."
+  },
+  "installerNoResponse": {
+    "message": "Widevine diegiklis neatsakė."
+  },
+  "unknownCommand": {
+    "message": "Nežinoma Widevine komanda."
+  },
+  "noticeTitle": {
+    "message": "Reikalingas Google Widevine plugin"
+  },
+  "restartTitle": {
+    "message": "Paleiskite browser iš naujo"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Šiai svetainei reikia Google Widevine plugin, kad būtų galima leisti DRM apsaugotą turinį"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Šiai svetainei reikia Google Widevine plugin, kad būtų galima leisti DRM apsaugotą turinį, bet Google Widevine plugin pagalbinė programa nepasiekiama."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Šiai svetainei reikia Google Widevine plugin, kad būtų galima leisti DRM apsaugotą turinį. Paleiskite browser iš naujo, kad būtų įkeltas įjungtas papildinys."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Šiai svetainei reikia Google Widevine plugin, kad būtų galima leisti DRM apsaugotą turinį. Įjunkite Google Widevine plugin, tada paleiskite browser iš naujo."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Šiai svetainei reikia Google Widevine plugin, kad būtų galima leisti DRM apsaugotą turinį. Įjunkite Google Widevine plugin, kad atsisiųstumėte papildinį."
+  },
+  "enableButton": {
+    "message": "Įjungti"
+  },
+  "dismissButton": {
+    "message": "Uždaryti"
+  },
+  "workingButton": {
+    "message": "Vykdoma"
+  },
+  "enableFailed": {
+    "message": "Nepavyko įjungti Widevine."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine įjungtas. Paleiskite browser iš naujo, kad jis būtų įkeltas."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine įdiegtas. Paleiskite browser iš naujo, kad jis būtų įkeltas."
+  },
+  "internetRequired": {
+    "message": "Norint atsisiųsti Widevine papildinį, reikalingas interneto ryšys."
+  },
+  "downloadFailed": {
+    "message": "Widevine atsisiuntimas nepavyko."
+  },
+  "unsupportedArch": {
+    "message": "Google neskelbia Linux Widevine CDM šiai architektūrai."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Paleisti iš naujo"
+  },
+  "restartingBrowser": {
+    "message": "Naršyklė paleidžiama iš naujo..."
+  },
+  "restartFailed": {
+    "message": "Nepavyko paleisti naršyklės iš naujo."
+  },
+  "restartUnavailable": {
+    "message": "Nepavyko automatiškai paleisti naršyklės iš naujo."
+  }
+}

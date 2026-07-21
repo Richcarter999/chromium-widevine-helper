@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Nagda-download at nagto-toggle ng Widevine CDM para sa Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Sinusuri ang status..."
+  },
+  "toggleEnableWidevine": {
+    "message": "I-enable ang Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Naka-enable"
+  },
+  "summaryDisabled": {
+    "message": "Naka-disable"
+  },
+  "summaryWorking": {
+    "message": "Gumagana"
+  },
+  "widevineEnabled": {
+    "message": "Naka-enable ang Widevine."
+  },
+  "widevineDisabled": {
+    "message": "Naka-disable ang Widevine."
+  },
+  "enablingWidevine": {
+    "message": "Ini-enable ang Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Dini-disable ang Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Dina-download ang Widevine plugin, maghintay po"
+  },
+  "extensionContactError": {
+    "message": "Hindi makontak ang Widevine extension."
+  },
+  "extensionNoResponse": {
+    "message": "Hindi tumugon ang Widevine extension."
+  },
+  "installerContactError": {
+    "message": "Nabigo ang pag-download ng Widevine."
+  },
+  "installerNoResponse": {
+    "message": "Hindi tumugon ang Widevine installer."
+  },
+  "unknownCommand": {
+    "message": "Hindi kilalang Widevine command."
+  },
+  "noticeTitle": {
+    "message": "Kailangan ang Google Widevine plugin"
+  },
+  "restartTitle": {
+    "message": "I-restart ang browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Kailangan ng site na ito ang Google Widevine plugin upang mag-play ng DRM protected content"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Kailangan ng site na ito ang Google Widevine plugin upang mag-play ng DRM protected content, pero hindi available ang Google Widevine plugin helper."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Kailangan ng site na ito ang Google Widevine plugin upang mag-play ng DRM protected content. I-restart ang browser para ma-load ang naka-enable na plugin."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Kailangan ng site na ito ang Google Widevine plugin upang mag-play ng DRM protected content. I-enable ang Google Widevine plugin, pagkatapos ay i-restart ang browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Kailangan ng site na ito ang Google Widevine plugin upang mag-play ng DRM protected content. I-enable ang Google Widevine plugin para ma-download ang plugin."
+  },
+  "enableButton": {
+    "message": "I-enable"
+  },
+  "dismissButton": {
+    "message": "I-dismiss"
+  },
+  "workingButton": {
+    "message": "Gumagana"
+  },
+  "enableFailed": {
+    "message": "Hindi ma-enable ang Widevine."
+  },
+  "widevineEnabledRestart": {
+    "message": "Naka-enable ang Widevine. I-restart ang browser para ma-load ito."
+  },
+  "widevineInstalledRestart": {
+    "message": "Na-install ang Widevine. I-restart ang browser para ma-load ito."
+  },
+  "internetRequired": {
+    "message": "Kailangan ng internet connection upang ma-download ang Widevine plugin."
+  },
+  "downloadFailed": {
+    "message": "Nabigo ang pag-download ng Widevine."
+  },
+  "unsupportedArch": {
+    "message": "Hindi naglalabas ang Google ng Linux Widevine CDM para sa architecture na ito."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "I-restart"
+  },
+  "restartingBrowser": {
+    "message": "Nire-restart ang browser..."
+  },
+  "restartFailed": {
+    "message": "Hindi ma-restart ang browser."
+  },
+  "restartUnavailable": {
+    "message": "Hindi awtomatikong ma-restart ang browser."
+  }
+}

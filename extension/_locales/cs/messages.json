@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Stahuje a přepíná Widevine CDM pro Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Kontrola stavu..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Povolit Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Povoleno"
+  },
+  "summaryDisabled": {
+    "message": "Zakázáno"
+  },
+  "summaryWorking": {
+    "message": "Pracuji"
+  },
+  "widevineEnabled": {
+    "message": "Widevine je povolený."
+  },
+  "widevineDisabled": {
+    "message": "Widevine je zakázaný."
+  },
+  "enablingWidevine": {
+    "message": "Povolování Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Zakazování Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Plugin Widevine se stahuje, čekejte prosím"
+  },
+  "extensionContactError": {
+    "message": "Nelze kontaktovat rozšíření Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "Rozšíření Widevine neodpovědělo."
+  },
+  "installerContactError": {
+    "message": "Stažení Widevine se nezdařilo."
+  },
+  "installerNoResponse": {
+    "message": "Instalátor Widevine neodpověděl."
+  },
+  "unknownCommand": {
+    "message": "Neznámý příkaz Widevine."
+  },
+  "noticeTitle": {
+    "message": "Je vyžadován Google Widevine plugin"
+  },
+  "restartTitle": {
+    "message": "Restartujte browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Tento web vyžaduje Google Widevine plugin pro přehrávání obsahu chráněného DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Tento web vyžaduje Google Widevine plugin pro přehrávání obsahu chráněného DRM, ale pomocník Google Widevine plugin není dostupný."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Tento web vyžaduje Google Widevine plugin pro přehrávání obsahu chráněného DRM. Restartujte browser, aby se povolený plugin načetl."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Tento web vyžaduje Google Widevine plugin pro přehrávání obsahu chráněného DRM. Povolte Google Widevine plugin a potom restartujte browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Tento web vyžaduje Google Widevine plugin pro přehrávání obsahu chráněného DRM. Povolte Google Widevine plugin pro stažení pluginu."
+  },
+  "enableButton": {
+    "message": "Povolit"
+  },
+  "dismissButton": {
+    "message": "Zavřít"
+  },
+  "workingButton": {
+    "message": "Pracuji"
+  },
+  "enableFailed": {
+    "message": "Widevine se nepodařilo povolit."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine je povolený. Restartujte browser, aby se načetl."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine byl nainstalován. Restartujte browser, aby se načetl."
+  },
+  "internetRequired": {
+    "message": "Ke stažení pluginu Widevine je vyžadováno připojení k internetu."
+  },
+  "downloadFailed": {
+    "message": "Stažení Widevine se nezdařilo."
+  },
+  "unsupportedArch": {
+    "message": "Google pro tuto architekturu nezveřejňuje Linux Widevine CDM."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Restartovat"
+  },
+  "restartingBrowser": {
+    "message": "Prohlížeč se restartuje..."
+  },
+  "restartFailed": {
+    "message": "Prohlížeč se nepodařilo restartovat."
+  },
+  "restartUnavailable": {
+    "message": "Prohlížeč se nepodařilo automaticky restartovat."
+  }
+}

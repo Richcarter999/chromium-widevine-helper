@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Chromium 用の Widevine CDM をダウンロードし、有効/無効を切り替えます。"
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "状態を確認しています..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Widevine を有効にする"
+  },
+  "summaryEnabled": {
+    "message": "有効"
+  },
+  "summaryDisabled": {
+    "message": "無効"
+  },
+  "summaryWorking": {
+    "message": "処理中"
+  },
+  "widevineEnabled": {
+    "message": "Widevine は有効です。"
+  },
+  "widevineDisabled": {
+    "message": "Widevine は無効です。"
+  },
+  "enablingWidevine": {
+    "message": "Widevine を有効にしています..."
+  },
+  "disablingWidevine": {
+    "message": "Widevine を無効にしています..."
+  },
+  "downloadingWidevine": {
+    "message": "Widevine プラグインをダウンロードしています。しばらくお待ちください"
+  },
+  "extensionContactError": {
+    "message": "Widevine 拡張機能に接続できません。"
+  },
+  "extensionNoResponse": {
+    "message": "Widevine 拡張機能から応答がありません。"
+  },
+  "installerContactError": {
+    "message": "Widevine のダウンロードに失敗しました。"
+  },
+  "installerNoResponse": {
+    "message": "Widevine インストーラーから応答がありません。"
+  },
+  "unknownCommand": {
+    "message": "不明な Widevine コマンドです。"
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin が必要です"
+  },
+  "restartTitle": {
+    "message": "browser を再起動してください"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "このサイトで DRM 保護コンテンツを再生するには Google Widevine plugin が必要です"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "このサイトで DRM 保護コンテンツを再生するには Google Widevine plugin が必要ですが、Google Widevine plugin ヘルパーを利用できません。"
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "このサイトで DRM 保護コンテンツを再生するには Google Widevine plugin が必要です。有効にしたプラグインを読み込むには browser を再起動してください。"
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "このサイトで DRM 保護コンテンツを再生するには Google Widevine plugin が必要です。Google Widevine plugin を有効にしてから browser を再起動してください。"
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "このサイトで DRM 保護コンテンツを再生するには Google Widevine plugin が必要です。Google Widevine plugin を有効にしてプラグインをダウンロードしてください。"
+  },
+  "enableButton": {
+    "message": "有効にする"
+  },
+  "dismissButton": {
+    "message": "閉じる"
+  },
+  "workingButton": {
+    "message": "処理中"
+  },
+  "enableFailed": {
+    "message": "Widevine を有効にできませんでした。"
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine は有効です。読み込むには browser を再起動してください。"
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine をインストールしました。読み込むには browser を再起動してください。"
+  },
+  "internetRequired": {
+    "message": "Widevine プラグインをダウンロードするにはインターネット接続が必要です。"
+  },
+  "downloadFailed": {
+    "message": "Widevine のダウンロードに失敗しました。"
+  },
+  "unsupportedArch": {
+    "message": "Google はこのアーキテクチャ向けの Linux Widevine CDM を公開していません。"
+  },
+  "badgeOn": {
+    "message": "有効"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "再起動"
+  },
+  "restartingBrowser": {
+    "message": "browser を再起動しています..."
+  },
+  "restartFailed": {
+    "message": "browser を再起動できませんでした。"
+  },
+  "restartUnavailable": {
+    "message": "browser を自動的に再起動できません。"
+  }
+}

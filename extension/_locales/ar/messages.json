@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "تنزيل Widevine CDM لـ Chromium وتبديل تشغيله."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "جارٍ التحقق من الحالة..."
+  },
+  "toggleEnableWidevine": {
+    "message": "تفعيل Widevine"
+  },
+  "summaryEnabled": {
+    "message": "مفعّل"
+  },
+  "summaryDisabled": {
+    "message": "معطّل"
+  },
+  "summaryWorking": {
+    "message": "جارٍ العمل"
+  },
+  "widevineEnabled": {
+    "message": "Widevine مفعّل."
+  },
+  "widevineDisabled": {
+    "message": "Widevine معطّل."
+  },
+  "enablingWidevine": {
+    "message": "جارٍ تفعيل Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "جارٍ تعطيل Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "جارٍ تنزيل إضافة Widevine، يُرجى الانتظار"
+  },
+  "extensionContactError": {
+    "message": "تعذر الاتصال بإضافة Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "لم تستجب إضافة Widevine."
+  },
+  "installerContactError": {
+    "message": "فشل تنزيل Widevine."
+  },
+  "installerNoResponse": {
+    "message": "لم يستجب مثبّت Widevine."
+  },
+  "unknownCommand": {
+    "message": "أمر Widevine غير معروف."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin مطلوب"
+  },
+  "restartTitle": {
+    "message": "أعد تشغيل browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "يتطلب هذا الموقع Google Widevine plugin لتشغيل محتوى محمي بنظام DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "يتطلب هذا الموقع Google Widevine plugin لتشغيل محتوى محمي بنظام DRM، لكن مساعد Google Widevine plugin غير متاح."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "يتطلب هذا الموقع Google Widevine plugin لتشغيل محتوى محمي بنظام DRM. أعد تشغيل browser لتحميل الإضافة المفعّلة."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "يتطلب هذا الموقع Google Widevine plugin لتشغيل محتوى محمي بنظام DRM. فعّل Google Widevine plugin، ثم أعد تشغيل browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "يتطلب هذا الموقع Google Widevine plugin لتشغيل محتوى محمي بنظام DRM. فعّل Google Widevine plugin لتنزيل الإضافة."
+  },
+  "enableButton": {
+    "message": "تفعيل"
+  },
+  "dismissButton": {
+    "message": "إغلاق"
+  },
+  "workingButton": {
+    "message": "جارٍ العمل"
+  },
+  "enableFailed": {
+    "message": "تعذر تفعيل Widevine."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine مفعّل. أعد تشغيل browser لتحميله."
+  },
+  "widevineInstalledRestart": {
+    "message": "تم تثبيت Widevine. أعد تشغيل browser لتحميله."
+  },
+  "internetRequired": {
+    "message": "يلزم اتصال بالإنترنت لتنزيل إضافة Widevine."
+  },
+  "downloadFailed": {
+    "message": "فشل تنزيل Widevine."
+  },
+  "unsupportedArch": {
+    "message": "لا تنشر Google حزمة Linux Widevine CDM لهذه البنية."
+  },
+  "badgeOn": {
+    "message": "تشغيل"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "إعادة التشغيل"
+  },
+  "restartingBrowser": {
+    "message": "تتم إعادة تشغيل المتصفح..."
+  },
+  "restartFailed": {
+    "message": "تعذرت إعادة تشغيل المتصفح."
+  },
+  "restartUnavailable": {
+    "message": "تعذرت إعادة تشغيل المتصفح تلقائيًا."
+  }
+}

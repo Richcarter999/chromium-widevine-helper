@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "የ Chromium Widevine CDM ያወርዳል እና ያብራ/ያጠፋል።"
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "ሁኔታ በመፈተሽ ላይ..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Widevine አብራ"
+  },
+  "summaryEnabled": {
+    "message": "በርቷል"
+  },
+  "summaryDisabled": {
+    "message": "ጠፍቷል"
+  },
+  "summaryWorking": {
+    "message": "በመስራት ላይ"
+  },
+  "widevineEnabled": {
+    "message": "Widevine በርቷል።"
+  },
+  "widevineDisabled": {
+    "message": "Widevine ጠፍቷል።"
+  },
+  "enablingWidevine": {
+    "message": "Widevine በማብራት ላይ..."
+  },
+  "disablingWidevine": {
+    "message": "Widevine በማጥፋት ላይ..."
+  },
+  "downloadingWidevine": {
+    "message": "የ Widevine ፕለጊን በመውረድ ላይ ነው፣ እባክዎ ይጠብቁ"
+  },
+  "extensionContactError": {
+    "message": "የ Widevine ቅጥያን ማግኘት አልተቻለም።"
+  },
+  "extensionNoResponse": {
+    "message": "የ Widevine ቅጥያ ምላሽ አልሰጠም።"
+  },
+  "installerContactError": {
+    "message": "Widevine ማውረድ አልተሳካም።"
+  },
+  "installerNoResponse": {
+    "message": "የ Widevine ጫኚ ምላሽ አልሰጠም።"
+  },
+  "unknownCommand": {
+    "message": "ያልታወቀ የ Widevine ትእዛዝ።"
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin ያስፈልጋል"
+  },
+  "restartTitle": {
+    "message": "browser እንደገና ያስጀምሩ"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "ይህ ጣቢያ DRM የተጠበቀ ይዘት ለመጫወት Google Widevine plugin ያስፈልገዋል"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "ይህ ጣቢያ DRM የተጠበቀ ይዘት ለመጫወት Google Widevine plugin ያስፈልገዋል፣ ግን የ Google Widevine plugin አጋዥ አይገኝም።"
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "ይህ ጣቢያ DRM የተጠበቀ ይዘት ለመጫወት Google Widevine plugin ያስፈልገዋል። የተነቃውን ፕለጊን ለመጫን browser እንደገና ያስጀምሩ።"
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "ይህ ጣቢያ DRM የተጠበቀ ይዘት ለመጫወት Google Widevine plugin ያስፈልገዋል። Google Widevine plugin አብሩ፣ ከዚያ browser እንደገና ያስጀምሩ።"
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "ይህ ጣቢያ DRM የተጠበቀ ይዘት ለመጫወት Google Widevine plugin ያስፈልገዋል። ፕለጊኑን ለማውረድ Google Widevine plugin አብሩ።"
+  },
+  "enableButton": {
+    "message": "አብራ"
+  },
+  "dismissButton": {
+    "message": "ዝጋ"
+  },
+  "workingButton": {
+    "message": "በመስራት ላይ"
+  },
+  "enableFailed": {
+    "message": "Widevine ማብራት አልተቻለም።"
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine በርቷል። ለመጫን browser እንደገና ያስጀምሩ።"
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine ተጭኗል። ለመጫን browser እንደገና ያስጀምሩ።"
+  },
+  "internetRequired": {
+    "message": "የ Widevine ፕለጊንን ለማውረድ የበይነመረብ ግንኙነት ያስፈልጋል።"
+  },
+  "downloadFailed": {
+    "message": "Widevine ማውረድ አልተሳካም።"
+  },
+  "unsupportedArch": {
+    "message": "Google ለዚህ አርክቴክቸር የ Linux Widevine CDM አያቀርብም።"
+  },
+  "badgeOn": {
+    "message": "በርቷል"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "ዳግም አስጀምር"
+  },
+  "restartingBrowser": {
+    "message": "browser ዳግም እየተጀመረ ነው..."
+  },
+  "restartFailed": {
+    "message": "browserን ዳግም ማስጀመር አልተቻለም።"
+  },
+  "restartUnavailable": {
+    "message": "browserን በራስ-ሰር ዳግም ማስጀመር አልተቻለም።"
+  }
+}

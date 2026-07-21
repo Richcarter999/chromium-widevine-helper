@@ -1,0 +1,166 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine",
+    "description": "extensionName"
+  },
+  "extensionDescription": {
+    "message": "Downloads and toggles the Google Widevine plugin for Chromium-based browsers.",
+    "description": "extensionDescription"
+  },
+  "actionTitle": {
+    "message": "Widevine",
+    "description": "actionTitle"
+  },
+  "popupTitle": {
+    "message": "Widevine",
+    "description": "popupTitle"
+  },
+  "checkingStatus": {
+    "message": "Checking status...",
+    "description": "checkingStatus"
+  },
+  "toggleEnableWidevine": {
+    "message": "Enable Widevine",
+    "description": "toggleEnableWidevine"
+  },
+  "summaryEnabled": {
+    "message": "Enabled",
+    "description": "summaryEnabled"
+  },
+  "summaryDisabled": {
+    "message": "Disabled",
+    "description": "summaryDisabled"
+  },
+  "summaryWorking": {
+    "message": "Working",
+    "description": "summaryWorking"
+  },
+  "widevineEnabled": {
+    "message": "Widevine is enabled.",
+    "description": "widevineEnabled"
+  },
+  "widevineDisabled": {
+    "message": "Widevine is disabled.",
+    "description": "widevineDisabled"
+  },
+  "enablingWidevine": {
+    "message": "Enabling Widevine...",
+    "description": "enablingWidevine"
+  },
+  "disablingWidevine": {
+    "message": "Disabling Widevine...",
+    "description": "disablingWidevine"
+  },
+  "downloadingWidevine": {
+    "message": "Widevine plugin is being downloaded, please wait",
+    "description": "downloadingWidevine"
+  },
+  "extensionContactError": {
+    "message": "Unable to contact the Widevine extension.",
+    "description": "extensionContactError"
+  },
+  "extensionNoResponse": {
+    "message": "The Widevine extension did not respond.",
+    "description": "extensionNoResponse"
+  },
+  "installerContactError": {
+    "message": "Unable to download the Google Widevine plugin.",
+    "description": "installerContactError"
+  },
+  "installerNoResponse": {
+    "message": "The Widevine installer did not respond.",
+    "description": "installerNoResponse"
+  },
+  "unknownCommand": {
+    "message": "Unknown Widevine command.",
+    "description": "unknownCommand"
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin required",
+    "description": "noticeTitle"
+  },
+  "restartTitle": {
+    "message": "Restart browser",
+    "description": "restartTitle"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "This site requires the Google Widevine plugin in order to play DRM protected content",
+    "description": "siteRequiresWidevineDrm"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "This site requires the Google Widevine plugin in order to play DRM protected content, but the Widevine helper is unavailable.",
+    "description": "siteRequiresWidevineDrmHelperUnavailable"
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "This site requires the Google Widevine plugin in order to play DRM protected content. Restart your browser to load the enabled plugin.",
+    "description": "siteRequiresWidevineDrmRestart"
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "This site requires the Google Widevine plugin in order to play DRM protected content. Enable the Google Widevine plugin, then restart your browser.",
+    "description": "siteRequiresWidevineDrmInstalledDisabled"
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "This site requires the Google Widevine plugin in order to play DRM protected content. Enable the Google Widevine plugin to download it.",
+    "description": "siteRequiresWidevineDrmMissing"
+  },
+  "enableButton": {
+    "message": "Enable",
+    "description": "enableButton"
+  },
+  "dismissButton": {
+    "message": "Dismiss",
+    "description": "dismissButton"
+  },
+  "workingButton": {
+    "message": "Working",
+    "description": "workingButton"
+  },
+  "enableFailed": {
+    "message": "Widevine could not be enabled.",
+    "description": "enableFailed"
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine is enabled. Restart your browser to load it.",
+    "description": "widevineEnabledRestart"
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine was installed. Restart your browser to load it.",
+    "description": "widevineInstalledRestart"
+  },
+  "internetRequired": {
+    "message": "An internet connection is required in order to download the Widevine plugin.",
+    "description": "internetRequired"
+  },
+  "downloadFailed": {
+    "message": "Unable to download the Google Widevine plugin.",
+    "description": "downloadFailed"
+  },
+  "unsupportedArch": {
+    "message": "Google does not publish the Linux Widevine CDM for this architecture.",
+    "description": "unsupportedArch"
+  },
+  "badgeOn": {
+    "message": "ON",
+    "description": "badgeOn"
+  },
+  "badgeDrm": {
+    "message": "DRM",
+    "description": "badgeDrm"
+  },
+  "restartButton": {
+    "message": "Restart",
+    "description": "restartButton"
+  },
+  "restartingBrowser": {
+    "message": "Restarting browser...",
+    "description": "restartingBrowser"
+  },
+  "restartFailed": {
+    "message": "Browser could not be restarted.",
+    "description": "restartFailed"
+  },
+  "restartUnavailable": {
+    "message": "Unable to restart the browser automatically.",
+    "description": "restartUnavailable"
+  }
+}

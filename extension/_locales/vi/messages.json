@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Tải xuống và bật hoặc tắt Widevine CDM cho Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Đang kiểm tra trạng thái..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Bật Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Đã bật"
+  },
+  "summaryDisabled": {
+    "message": "Đã tắt"
+  },
+  "summaryWorking": {
+    "message": "Đang xử lý"
+  },
+  "widevineEnabled": {
+    "message": "Widevine đã được bật."
+  },
+  "widevineDisabled": {
+    "message": "Widevine đã bị tắt."
+  },
+  "enablingWidevine": {
+    "message": "Đang bật Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Đang tắt Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Plugin Widevine đang được tải xuống, vui lòng chờ"
+  },
+  "extensionContactError": {
+    "message": "Không thể liên hệ với tiện ích Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "Tiện ích Widevine không phản hồi."
+  },
+  "installerContactError": {
+    "message": "Tải Widevine xuống thất bại."
+  },
+  "installerNoResponse": {
+    "message": "Trình cài đặt Widevine không phản hồi."
+  },
+  "unknownCommand": {
+    "message": "Lệnh Widevine không xác định."
+  },
+  "noticeTitle": {
+    "message": "Cần Google Widevine plugin"
+  },
+  "restartTitle": {
+    "message": "Khởi động lại browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Trang web này cần Google Widevine plugin để phát nội dung được bảo vệ bằng DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Trang web này cần Google Widevine plugin để phát nội dung được bảo vệ bằng DRM, nhưng trình trợ giúp Google Widevine plugin không khả dụng."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Trang web này cần Google Widevine plugin để phát nội dung được bảo vệ bằng DRM. Khởi động lại browser để tải plugin đã bật."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Trang web này cần Google Widevine plugin để phát nội dung được bảo vệ bằng DRM. Bật Google Widevine plugin, rồi khởi động lại browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Trang web này cần Google Widevine plugin để phát nội dung được bảo vệ bằng DRM. Bật Google Widevine plugin để tải plugin xuống."
+  },
+  "enableButton": {
+    "message": "Bật"
+  },
+  "dismissButton": {
+    "message": "Đóng"
+  },
+  "workingButton": {
+    "message": "Đang xử lý"
+  },
+  "enableFailed": {
+    "message": "Không thể bật Widevine."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine đã được bật. Khởi động lại browser để tải nó."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine đã được cài đặt. Khởi động lại browser để tải nó."
+  },
+  "internetRequired": {
+    "message": "Cần có kết nối internet để tải plugin Widevine xuống."
+  },
+  "downloadFailed": {
+    "message": "Tải Widevine xuống thất bại."
+  },
+  "unsupportedArch": {
+    "message": "Google không phát hành Linux Widevine CDM cho kiến trúc này."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Khởi động lại"
+  },
+  "restartingBrowser": {
+    "message": "Đang khởi động lại trình duyệt..."
+  },
+  "restartFailed": {
+    "message": "Không thể khởi động lại trình duyệt."
+  },
+  "restartUnavailable": {
+    "message": "Không thể tự động khởi động lại trình duyệt."
+  }
+}

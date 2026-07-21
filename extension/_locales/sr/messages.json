@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Преузима и укључује или искључује Widevine CDM за Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Провера статуса..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Омогући Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Омогућено"
+  },
+  "summaryDisabled": {
+    "message": "Онемогућено"
+  },
+  "summaryWorking": {
+    "message": "Ради"
+  },
+  "widevineEnabled": {
+    "message": "Widevine је омогућен."
+  },
+  "widevineDisabled": {
+    "message": "Widevine је онемогућен."
+  },
+  "enablingWidevine": {
+    "message": "Омогућавање Widevine-а..."
+  },
+  "disablingWidevine": {
+    "message": "Онемогућавање Widevine-а..."
+  },
+  "downloadingWidevine": {
+    "message": "Widevine додатак се преузима, сачекајте"
+  },
+  "extensionContactError": {
+    "message": "Није могуће контактирати Widevine проширење."
+  },
+  "extensionNoResponse": {
+    "message": "Widevine проширење није одговорило."
+  },
+  "installerContactError": {
+    "message": "Преузимање Widevine-а није успело."
+  },
+  "installerNoResponse": {
+    "message": "Widevine инсталатер није одговорио."
+  },
+  "unknownCommand": {
+    "message": "Непозната Widevine команда."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin је потребан"
+  },
+  "restartTitle": {
+    "message": "Поново покрените browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Овај сајт захтева Google Widevine plugin за репродукцију DRM заштићеног садржаја"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Овај сајт захтева Google Widevine plugin за репродукцију DRM заштићеног садржаја, али Google Widevine plugin помоћник није доступан."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Овај сајт захтева Google Widevine plugin за репродукцију DRM заштићеног садржаја. Поново покрените browser да би се учитао омогућени додатак."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Овај сајт захтева Google Widevine plugin за репродукцију DRM заштићеног садржаја. Омогућите Google Widevine plugin, затим поново покрените browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Овај сајт захтева Google Widevine plugin за репродукцију DRM заштићеног садржаја. Омогућите Google Widevine plugin да преузмете додатак."
+  },
+  "enableButton": {
+    "message": "Омогући"
+  },
+  "dismissButton": {
+    "message": "Затвори"
+  },
+  "workingButton": {
+    "message": "Ради"
+  },
+  "enableFailed": {
+    "message": "Widevine није могао да се омогући."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine је омогућен. Поново покрените browser да га учитате."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine је инсталиран. Поново покрените browser да га учитате."
+  },
+  "internetRequired": {
+    "message": "Потребна је интернет веза за преузимање Widevine додатка."
+  },
+  "downloadFailed": {
+    "message": "Преузимање Widevine-а није успело."
+  },
+  "unsupportedArch": {
+    "message": "Google не објављује Linux Widevine CDM за ову архитектуру."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Поново покрени"
+  },
+  "restartingBrowser": {
+    "message": "Прегледач се поново покреће..."
+  },
+  "restartFailed": {
+    "message": "Прегледач није могуће поново покренути."
+  },
+  "restartUnavailable": {
+    "message": "Прегледач није могуће аутоматски поново покренути."
+  }
+}

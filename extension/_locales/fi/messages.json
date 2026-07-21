@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Lataa ja ottaa käyttöön tai poistaa käytöstä Widevine CDM:n Chromiumille."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Tarkistetaan tilaa..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Ota Widevine käyttöön"
+  },
+  "summaryEnabled": {
+    "message": "Käytössä"
+  },
+  "summaryDisabled": {
+    "message": "Pois käytöstä"
+  },
+  "summaryWorking": {
+    "message": "Työstetään"
+  },
+  "widevineEnabled": {
+    "message": "Widevine on käytössä."
+  },
+  "widevineDisabled": {
+    "message": "Widevine on pois käytöstä."
+  },
+  "enablingWidevine": {
+    "message": "Otetaan Widevine käyttöön..."
+  },
+  "disablingWidevine": {
+    "message": "Poistetaan Widevine käytöstä..."
+  },
+  "downloadingWidevine": {
+    "message": "Widevine-liitännäistä ladataan, odota"
+  },
+  "extensionContactError": {
+    "message": "Widevine-laajennukseen ei saada yhteyttä."
+  },
+  "extensionNoResponse": {
+    "message": "Widevine-laajennus ei vastannut."
+  },
+  "installerContactError": {
+    "message": "Widevinen lataus epäonnistui."
+  },
+  "installerNoResponse": {
+    "message": "Widevine-asennin ei vastannut."
+  },
+  "unknownCommand": {
+    "message": "Tuntematon Widevine-komento."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin vaaditaan"
+  },
+  "restartTitle": {
+    "message": "Käynnistä browser uudelleen"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Tämä sivusto vaatii Google Widevine pluginn DRM-suojatun sisällön toistamiseen"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Tämä sivusto vaatii Google Widevine pluginn DRM-suojatun sisällön toistamiseen, mutta Google Widevine plugin-apuohjelma ei ole käytettävissä."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Tämä sivusto vaatii Google Widevine pluginn DRM-suojatun sisällön toistamiseen. Käynnistä browser uudelleen, jotta käytössä oleva liitännäinen latautuu."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Tämä sivusto vaatii Google Widevine pluginn DRM-suojatun sisällön toistamiseen. Ota Google Widevine plugin käyttöön ja käynnistä browser uudelleen."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Tämä sivusto vaatii Google Widevine pluginn DRM-suojatun sisällön toistamiseen. Ota Google Widevine plugin käyttöön ladataksesi liitännäisen."
+  },
+  "enableButton": {
+    "message": "Ota käyttöön"
+  },
+  "dismissButton": {
+    "message": "Sulje"
+  },
+  "workingButton": {
+    "message": "Työstetään"
+  },
+  "enableFailed": {
+    "message": "Widevinen käyttöönotto epäonnistui."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine on käytössä. Käynnistä browser uudelleen ladataksesi sen."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine asennettiin. Käynnistä browser uudelleen ladataksesi sen."
+  },
+  "internetRequired": {
+    "message": "Widevine-liitännäisen lataaminen vaatii internet-yhteyden."
+  },
+  "downloadFailed": {
+    "message": "Widevinen lataus epäonnistui."
+  },
+  "unsupportedArch": {
+    "message": "Google ei julkaise Linux Widevine CDM:ää tälle arkkitehtuurille."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Käynnistä uudelleen"
+  },
+  "restartingBrowser": {
+    "message": "Selain käynnistetään uudelleen..."
+  },
+  "restartFailed": {
+    "message": "Selainta ei voitu käynnistää uudelleen."
+  },
+  "restartUnavailable": {
+    "message": "Selainta ei voitu käynnistää automaattisesti uudelleen."
+  }
+}

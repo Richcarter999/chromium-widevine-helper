@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Chromium-এর জন্য Widevine CDM ডাউনলোড করে এবং চালু/বন্ধ করে।"
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "অবস্থা পরীক্ষা করা হচ্ছে..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Widevine চালু করুন"
+  },
+  "summaryEnabled": {
+    "message": "চালু"
+  },
+  "summaryDisabled": {
+    "message": "বন্ধ"
+  },
+  "summaryWorking": {
+    "message": "কাজ চলছে"
+  },
+  "widevineEnabled": {
+    "message": "Widevine চালু আছে।"
+  },
+  "widevineDisabled": {
+    "message": "Widevine বন্ধ আছে।"
+  },
+  "enablingWidevine": {
+    "message": "Widevine চালু করা হচ্ছে..."
+  },
+  "disablingWidevine": {
+    "message": "Widevine বন্ধ করা হচ্ছে..."
+  },
+  "downloadingWidevine": {
+    "message": "Widevine প্লাগইন ডাউনলোড হচ্ছে, অনুগ্রহ করে অপেক্ষা করুন"
+  },
+  "extensionContactError": {
+    "message": "Widevine এক্সটেনশনের সাথে যোগাযোগ করা যায়নি।"
+  },
+  "extensionNoResponse": {
+    "message": "Widevine এক্সটেনশন সাড়া দেয়নি।"
+  },
+  "installerContactError": {
+    "message": "Widevine ডাউনলোড ব্যর্থ হয়েছে।"
+  },
+  "installerNoResponse": {
+    "message": "Widevine ইনস্টলার সাড়া দেয়নি।"
+  },
+  "unknownCommand": {
+    "message": "অজানা Widevine কমান্ড।"
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin প্রয়োজন"
+  },
+  "restartTitle": {
+    "message": "browser পুনরায় চালু করুন"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "DRM সুরক্ষিত কনটেন্ট চালাতে এই সাইটের Google Widevine plugin প্রয়োজন"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "DRM সুরক্ষিত কনটেন্ট চালাতে এই সাইটের Google Widevine plugin প্রয়োজন, কিন্তু Google Widevine plugin সহায়ক উপলভ্য নয়।"
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "DRM সুরক্ষিত কনটেন্ট চালাতে এই সাইটের Google Widevine plugin প্রয়োজন। সক্রিয় প্লাগইন লোড করতে browser পুনরায় চালু করুন।"
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "DRM সুরক্ষিত কনটেন্ট চালাতে এই সাইটের Google Widevine plugin প্রয়োজন। Google Widevine plugin চালু করুন, তারপর browser পুনরায় চালু করুন।"
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "DRM সুরক্ষিত কনটেন্ট চালাতে এই সাইটের Google Widevine plugin প্রয়োজন। প্লাগইন ডাউনলোড করতে Google Widevine plugin চালু করুন।"
+  },
+  "enableButton": {
+    "message": "চালু করুন"
+  },
+  "dismissButton": {
+    "message": "বন্ধ করুন"
+  },
+  "workingButton": {
+    "message": "কাজ চলছে"
+  },
+  "enableFailed": {
+    "message": "Widevine চালু করা যায়নি।"
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine চালু আছে। এটি লোড করতে browser পুনরায় চালু করুন।"
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine ইনস্টল হয়েছে। এটি লোড করতে browser পুনরায় চালু করুন।"
+  },
+  "internetRequired": {
+    "message": "Widevine প্লাগইন ডাউনলোড করতে ইন্টারনেট সংযোগ প্রয়োজন।"
+  },
+  "downloadFailed": {
+    "message": "Widevine ডাউনলোড ব্যর্থ হয়েছে।"
+  },
+  "unsupportedArch": {
+    "message": "Google এই আর্কিটেকচারের জন্য Linux Widevine CDM প্রকাশ করে না।"
+  },
+  "badgeOn": {
+    "message": "চালু"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "পুনরায় চালু করুন"
+  },
+  "restartingBrowser": {
+    "message": "ব্রাউজার পুনরায় চালু হচ্ছে..."
+  },
+  "restartFailed": {
+    "message": "ব্রাউজার পুনরায় চালু করা যায়নি।"
+  },
+  "restartUnavailable": {
+    "message": "ব্রাউজারটি স্বয়ংক্রিয়ভাবে পুনরায় চালু করা যায়নি।"
+  }
+}

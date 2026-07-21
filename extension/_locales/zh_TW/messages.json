@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "下載並切換 Chromium 的 Widevine CDM。"
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "正在檢查狀態..."
+  },
+  "toggleEnableWidevine": {
+    "message": "啟用 Widevine"
+  },
+  "summaryEnabled": {
+    "message": "已啟用"
+  },
+  "summaryDisabled": {
+    "message": "已停用"
+  },
+  "summaryWorking": {
+    "message": "正在處理"
+  },
+  "widevineEnabled": {
+    "message": "Widevine 已啟用。"
+  },
+  "widevineDisabled": {
+    "message": "Widevine 已停用。"
+  },
+  "enablingWidevine": {
+    "message": "正在啟用 Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "正在停用 Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "正在下載 Widevine 外掛程式，請稍候"
+  },
+  "extensionContactError": {
+    "message": "無法聯絡 Widevine 擴充功能。"
+  },
+  "extensionNoResponse": {
+    "message": "Widevine 擴充功能沒有回應。"
+  },
+  "installerContactError": {
+    "message": "Widevine 下載失敗。"
+  },
+  "installerNoResponse": {
+    "message": "Widevine 安裝程式沒有回應。"
+  },
+  "unknownCommand": {
+    "message": "未知的 Widevine 指令。"
+  },
+  "noticeTitle": {
+    "message": "需要 Google Widevine plugin"
+  },
+  "restartTitle": {
+    "message": "重新啟動 browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "此網站需要 Google Widevine plugin 才能播放受 DRM 保護的內容"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "此網站需要 Google Widevine plugin 才能播放受 DRM 保護的內容，但 Google Widevine plugin 輔助程式無法使用。"
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "此網站需要 Google Widevine plugin 才能播放受 DRM 保護的內容。請重新啟動 browser 以載入已啟用的外掛程式。"
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "此網站需要 Google Widevine plugin 才能播放受 DRM 保護的內容。請啟用 Google Widevine plugin，然後重新啟動 browser。"
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "此網站需要 Google Widevine plugin 才能播放受 DRM 保護的內容。請啟用 Google Widevine plugin 以下載外掛程式。"
+  },
+  "enableButton": {
+    "message": "啟用"
+  },
+  "dismissButton": {
+    "message": "關閉"
+  },
+  "workingButton": {
+    "message": "正在處理"
+  },
+  "enableFailed": {
+    "message": "無法啟用 Widevine。"
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine 已啟用。請重新啟動 browser 以載入它。"
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine 已安裝。請重新啟動 browser 以載入它。"
+  },
+  "internetRequired": {
+    "message": "需要網際網路連線才能下載 Widevine 外掛程式。"
+  },
+  "downloadFailed": {
+    "message": "Widevine 下載失敗。"
+  },
+  "unsupportedArch": {
+    "message": "Google 未針對此架構發布 Linux Widevine CDM。"
+  },
+  "badgeOn": {
+    "message": "開"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "重新啟動"
+  },
+  "restartingBrowser": {
+    "message": "正在重新啟動瀏覽器..."
+  },
+  "restartFailed": {
+    "message": "無法重新啟動瀏覽器。"
+  },
+  "restartUnavailable": {
+    "message": "無法自動重新啟動瀏覽器。"
+  }
+}

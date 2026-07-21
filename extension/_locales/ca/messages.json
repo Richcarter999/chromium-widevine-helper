@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Baixa i activa o desactiva el CDM Widevine per a Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "S’està comprovant l’estat..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Activa Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Activat"
+  },
+  "summaryDisabled": {
+    "message": "Desactivat"
+  },
+  "summaryWorking": {
+    "message": "Treballant"
+  },
+  "widevineEnabled": {
+    "message": "Widevine està activat."
+  },
+  "widevineDisabled": {
+    "message": "Widevine està desactivat."
+  },
+  "enablingWidevine": {
+    "message": "S’està activant Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "S’està desactivant Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "S’està baixant el connector Widevine, espereu"
+  },
+  "extensionContactError": {
+    "message": "No s’ha pogut contactar amb l’extensió Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "L’extensió Widevine no ha respost."
+  },
+  "installerContactError": {
+    "message": "Ha fallat la baixada de Widevine."
+  },
+  "installerNoResponse": {
+    "message": "L’instal·lador de Widevine no ha respost."
+  },
+  "unknownCommand": {
+    "message": "Ordre Widevine desconeguda."
+  },
+  "noticeTitle": {
+    "message": "Cal Google Widevine plugin"
+  },
+  "restartTitle": {
+    "message": "Reinicieu browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Aquest lloc requereix Google Widevine plugin per reproduir contingut protegit amb DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Aquest lloc requereix Google Widevine plugin per reproduir contingut protegit amb DRM, però l’ajudant de Google Widevine plugin no està disponible."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Aquest lloc requereix Google Widevine plugin per reproduir contingut protegit amb DRM. Reinicieu browser per carregar el connector activat."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Aquest lloc requereix Google Widevine plugin per reproduir contingut protegit amb DRM. Activeu Google Widevine plugin i després reinicieu browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Aquest lloc requereix Google Widevine plugin per reproduir contingut protegit amb DRM. Activeu Google Widevine plugin per baixar el connector."
+  },
+  "enableButton": {
+    "message": "Activa"
+  },
+  "dismissButton": {
+    "message": "Descarta"
+  },
+  "workingButton": {
+    "message": "Treballant"
+  },
+  "enableFailed": {
+    "message": "No s’ha pogut activar Widevine."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine està activat. Reinicieu browser per carregar-lo."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine s’ha instal·lat. Reinicieu browser per carregar-lo."
+  },
+  "internetRequired": {
+    "message": "Cal una connexió a Internet per baixar el connector Widevine."
+  },
+  "downloadFailed": {
+    "message": "Ha fallat la baixada de Widevine."
+  },
+  "unsupportedArch": {
+    "message": "Google no publica el CDM Widevine de Linux per a aquesta arquitectura."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Reinicia"
+  },
+  "restartingBrowser": {
+    "message": "S'està reiniciant el navegador..."
+  },
+  "restartFailed": {
+    "message": "No s'ha pogut reiniciar el navegador."
+  },
+  "restartUnavailable": {
+    "message": "No s'ha pogut reiniciar el navegador automàticament."
+  }
+}

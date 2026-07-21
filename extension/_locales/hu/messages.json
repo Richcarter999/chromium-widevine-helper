@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Letölti és be- vagy kikapcsolja a Widevine CDM-et a Chromiumhoz."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Állapot ellenőrzése..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Widevine engedélyezése"
+  },
+  "summaryEnabled": {
+    "message": "Engedélyezve"
+  },
+  "summaryDisabled": {
+    "message": "Letiltva"
+  },
+  "summaryWorking": {
+    "message": "Dolgozik"
+  },
+  "widevineEnabled": {
+    "message": "A Widevine engedélyezve van."
+  },
+  "widevineDisabled": {
+    "message": "A Widevine le van tiltva."
+  },
+  "enablingWidevine": {
+    "message": "Widevine engedélyezése..."
+  },
+  "disablingWidevine": {
+    "message": "Widevine letiltása..."
+  },
+  "downloadingWidevine": {
+    "message": "A Widevine bővítmény letöltése folyamatban, kérjük várjon"
+  },
+  "extensionContactError": {
+    "message": "Nem sikerült kapcsolatba lépni a Widevine bővítménnyel."
+  },
+  "extensionNoResponse": {
+    "message": "A Widevine bővítmény nem válaszolt."
+  },
+  "installerContactError": {
+    "message": "A Widevine letöltése sikertelen."
+  },
+  "installerNoResponse": {
+    "message": "A Widevine telepítő nem válaszolt."
+  },
+  "unknownCommand": {
+    "message": "Ismeretlen Widevine parancs."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin szükséges"
+  },
+  "restartTitle": {
+    "message": "Indítsa újra a browserot"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Ez a webhely Google Widevine plugin-t igényel a DRM-mel védett tartalom lejátszásához"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Ez a webhely Google Widevine plugin-t igényel a DRM-mel védett tartalom lejátszásához, de a Google Widevine plugin segéd nem érhető el."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Ez a webhely Google Widevine plugin-t igényel a DRM-mel védett tartalom lejátszásához. Indítsa újra a browserot az engedélyezett bővítmény betöltéséhez."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Ez a webhely Google Widevine plugin-t igényel a DRM-mel védett tartalom lejátszásához. Engedélyezze a Google Widevine plugin-t, majd indítsa újra a browserot."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Ez a webhely Google Widevine plugin-t igényel a DRM-mel védett tartalom lejátszásához. Engedélyezze a Google Widevine plugin-t a bővítmény letöltéséhez."
+  },
+  "enableButton": {
+    "message": "Engedélyezés"
+  },
+  "dismissButton": {
+    "message": "Bezárás"
+  },
+  "workingButton": {
+    "message": "Dolgozik"
+  },
+  "enableFailed": {
+    "message": "A Widevine nem engedélyezhető."
+  },
+  "widevineEnabledRestart": {
+    "message": "A Widevine engedélyezve van. Indítsa újra a browserot a betöltéséhez."
+  },
+  "widevineInstalledRestart": {
+    "message": "A Widevine telepítve lett. Indítsa újra a browserot a betöltéséhez."
+  },
+  "internetRequired": {
+    "message": "Internetkapcsolat szükséges a Widevine bővítmény letöltéséhez."
+  },
+  "downloadFailed": {
+    "message": "A Widevine letöltése sikertelen."
+  },
+  "unsupportedArch": {
+    "message": "A Google nem tesz közzé Linux Widevine CDM-et ehhez az architektúrához."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Újraindítás"
+  },
+  "restartingBrowser": {
+    "message": "A böngésző újraindul..."
+  },
+  "restartFailed": {
+    "message": "A böngészőt nem sikerült újraindítani."
+  },
+  "restartUnavailable": {
+    "message": "A böngészőt nem sikerült automatikusan újraindítani."
+  }
+}

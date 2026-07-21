@@ -1,0 +1,9 @@
+{
+  "name": "org.chromium.widevine",
+  "description": "Chromium Widevine installer",
+  "path": "/usr/libexec/chromium-widevine/chromium-widevine",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://dnnkjabdkplhcodcfjlhflpaclkccfjj/"
+  ]
+}

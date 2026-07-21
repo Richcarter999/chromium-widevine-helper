@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Descarcă și activează sau dezactivează Widevine CDM pentru Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Se verifică starea..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Activează Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Activat"
+  },
+  "summaryDisabled": {
+    "message": "Dezactivat"
+  },
+  "summaryWorking": {
+    "message": "Se lucrează"
+  },
+  "widevineEnabled": {
+    "message": "Widevine este activat."
+  },
+  "widevineDisabled": {
+    "message": "Widevine este dezactivat."
+  },
+  "enablingWidevine": {
+    "message": "Se activează Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Se dezactivează Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Pluginul Widevine se descarcă, vă rugăm așteptați"
+  },
+  "extensionContactError": {
+    "message": "Nu se poate contacta extensia Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "Extensia Widevine nu a răspuns."
+  },
+  "installerContactError": {
+    "message": "Descărcarea Widevine a eșuat."
+  },
+  "installerNoResponse": {
+    "message": "Instalatorul Widevine nu a răspuns."
+  },
+  "unknownCommand": {
+    "message": "Comandă Widevine necunoscută."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin necesar"
+  },
+  "restartTitle": {
+    "message": "Reporniți browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Acest site necesită Google Widevine plugin pentru a reda conținut protejat DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Acest site necesită Google Widevine plugin pentru a reda conținut protejat DRM, dar ajutorul Google Widevine plugin nu este disponibil."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Acest site necesită Google Widevine plugin pentru a reda conținut protejat DRM. Reporniți browser pentru a încărca pluginul activat."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Acest site necesită Google Widevine plugin pentru a reda conținut protejat DRM. Activați Google Widevine plugin, apoi reporniți browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Acest site necesită Google Widevine plugin pentru a reda conținut protejat DRM. Activați Google Widevine plugin pentru a descărca pluginul."
+  },
+  "enableButton": {
+    "message": "Activează"
+  },
+  "dismissButton": {
+    "message": "Închide"
+  },
+  "workingButton": {
+    "message": "Se lucrează"
+  },
+  "enableFailed": {
+    "message": "Widevine nu a putut fi activat."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine este activat. Reporniți browser pentru a-l încărca."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine a fost instalat. Reporniți browser pentru a-l încărca."
+  },
+  "internetRequired": {
+    "message": "Este necesară o conexiune la internet pentru a descărca pluginul Widevine."
+  },
+  "downloadFailed": {
+    "message": "Descărcarea Widevine a eșuat."
+  },
+  "unsupportedArch": {
+    "message": "Google nu publică Linux Widevine CDM pentru această arhitectură."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Repornește"
+  },
+  "restartingBrowser": {
+    "message": "Browserul se repornește..."
+  },
+  "restartFailed": {
+    "message": "Browserul nu a putut fi repornit."
+  },
+  "restartUnavailable": {
+    "message": "Browserul nu a putut fi repornit automat."
+  }
+}

@@ -1,0 +1,1891 @@
+#!/usr/bin/env python3
+#
+# Native-messaging host and launcher shim for optional Widevine CDM support.
+
+from __future__ import annotations
+
+import fcntl
+import hashlib
+import io
+import json
+import os
+import platform
+import re
+import shlex
+import shutil
+import signal
+import socket
+import struct
+import subprocess
+import sys
+import tempfile
+import time
+import urllib.error
+import urllib.request
+import zipfile
+from pathlib import Path
+
+
+EXTENSION_ID = "dnnkjabdkplhcodcfjlhflpaclkccfjj"
+HOST_NAME = "org.chromium.widevine"
+LEGACY_HOST_NAMES = ("net.imput.helium.widevine",)
+WIDEVINE_APP_ID = "oimompecagnajdejgnnjijobebaeigek"
+UPDATE_URL = "https://update.googleapis.com/service/update2/json"
+CONNECTIVITY_URL = "https://clients2.google.com/generate_204"
+INSTALLED_VERSION_FLOOR = "1.4.9.1088"
+DEFAULT_CHROMIUM_VERSION = "150.0.7871.128"
+WIDEVINE_ROOT_NAME = "WidevineCdm"
+HINT_FILE_NAME = "latest-component-updated-widevine-cdm"
+STATE_FILE_NAME = "chromium-widevine-state.json"
+LOG_FILE_NAME = "chromium-widevine-native.log"
+EXTENSION_VERSION_FILE_NAME = "chromium-widevine-extension-version"
+UPDATE_CHECK_INTERVAL_SECONDS = 6 * 60 * 60
+EXTENSION_PATH = Path(
+    os.environ.get("CHROMIUM_WIDEVINE_EXTENSION_PATH")
+    or "/usr/share/chromium-widevine/extension"
+)
+XSSI_PREFIX = ")]}'"
+USER_AGENT = "Chromium Widevine Installer"
+UPDATER_NAME = os.environ.get("CHROMIUM_WIDEVINE_UPDATER", "chromium-widevine")
+ARCH_ALIASES = {
+    "x86_64": "x64",
+    "amd64": "x64",
+    "x64": "x64",
+    "aarch64": "arm64",
+    "arm64": "arm64",
+}
+PLATFORM_DIR_BY_ARCH = {
+    "x64": "linux_x64",
+    "arm64": "linux_arm64",
+}
+ELF_MACHINE_BY_ARCH = {
+    "x64": 62,
+    "arm64": 183,
+}
+SYSTEM_WIDEVINE_DIRS = (
+    "/opt/google/chrome/WidevineCdm",
+    "/opt/google/chrome-beta/WidevineCdm",
+    "/opt/google/chrome-unstable/WidevineCdm",
+    "/opt/brave.com/brave/WidevineCdm",
+    "/opt/brave.com/brave-beta/WidevineCdm",
+    "/opt/brave.com/brave-nightly/WidevineCdm",
+    "/opt/chromium.org/chromium/WidevineCdm",
+    "/opt/WidevineCdm",
+    "/usr/lib64/chromium/WidevineCdm",
+    "/usr/lib64/chromium-browser/WidevineCdm",
+    "/usr/lib/chromium/WidevineCdm",
+    "/usr/lib/chromium-browser/WidevineCdm",
+    "/usr/lib/aarch64-linux-gnu/chromium/WidevineCdm",
+    "/usr/lib/aarch64-linux-gnu/chromium-browser/WidevineCdm",
+)
+BROWSER_CONFIG_DIRS = (
+    (("helium", "helium-browser"), ("net.imput.helium",)),
+    (("brave-browser-nightly", "brave-nightly"), ("BraveSoftware", "Brave-Browser-Nightly")),
+    (("brave-browser-beta", "brave-beta"), ("BraveSoftware", "Brave-Browser-Beta")),
+    (("brave-browser", "brave"), ("BraveSoftware", "Brave-Browser")),
+    (("microsoft-edge-dev", "msedge-dev"), ("microsoft-edge-dev",)),
+    (("microsoft-edge-beta", "msedge-beta"), ("microsoft-edge-beta",)),
+    (("microsoft-edge", "msedge"), ("microsoft-edge",)),
+    (("google-chrome-unstable",), ("google-chrome-unstable",)),
+    (("google-chrome-beta",), ("google-chrome-beta",)),
+    (("google-chrome-stable", "google-chrome"), ("google-chrome",)),
+    (("chrome",), ("google-chrome",)),
+    (("vivaldi-snapshot",), ("vivaldi-snapshot",)),
+    (("vivaldi-stable", "vivaldi-bin", "vivaldi"), ("vivaldi",)),
+    (("opera-developer",), ("opera-developer",)),
+    (("opera-beta",), ("opera-beta",)),
+    (("opera",), ("opera",)),
+    (("thorium-browser", "thorium"), ("thorium",)),
+    (("iridium-browser", "iridium"), ("iridium",)),
+    (("ungoogled-chromium",), ("chromium",)),
+    (("chromium-browser", "chromium", "chromium-freeworld"), ("chromium",)),
+)
+BROWSER_ALIASES = {
+    "helium": ("helium-browser",),
+    "brave": ("brave-browser",),
+    "brave-beta": ("brave-browser-beta",),
+    "brave-nightly": ("brave-browser-nightly",),
+    "chrome": ("google-chrome", "google-chrome-stable"),
+    "chrome-beta": ("google-chrome-beta",),
+    "chrome-unstable": ("google-chrome-unstable",),
+    "chromium": ("chromium", "chromium-browser"),
+    "chromium-freeworld": ("chromium-freeworld", "chromium"),
+    "edge": ("microsoft-edge",),
+    "edge-beta": ("microsoft-edge-beta",),
+    "edge-dev": ("microsoft-edge-dev",),
+    "iridium": ("iridium-browser",),
+    "opera": ("opera",),
+    "opera-beta": ("opera-beta",),
+    "opera-developer": ("opera-developer",),
+    "thorium": ("thorium-browser",),
+    "ungoogled-chromium": ("ungoogled-chromium", "chromium"),
+    "vivaldi": ("vivaldi",),
+    "vivaldi-snapshot": ("vivaldi-snapshot",),
+}
+
+
+class WidevineError(Exception):
+    def __init__(self, code: str, message: str):
+        super().__init__(message)
+        self.code = code
+        self.message = message
+
+
+def _json_response(ok: bool, **values):
+    response = {"ok": ok}
+    response.update(values)
+    return response
+
+
+def _config_home() -> Path:
+    xdg_config_home = os.environ.get("XDG_CONFIG_HOME")
+    if xdg_config_home:
+        return Path(xdg_config_home).expanduser()
+    return Path.home() / ".config"
+
+
+def _default_user_data_dir() -> Path:
+    return _config_home() / "chromium"
+
+
+def _abs_path(path: str) -> Path:
+    expanded = Path(os.path.expanduser(path))
+    if expanded.is_absolute():
+        return expanded
+    return (Path.cwd() / expanded).resolve()
+
+
+def _same_path(left: Path, right: Path) -> bool:
+    try:
+        return left.expanduser().resolve() == right.expanduser().resolve()
+    except OSError:
+        return left.expanduser().absolute() == right.expanduser().absolute()
+
+
+def _user_data_dir_from_args(args: list[str]) -> Path | None:
+    for index, arg in enumerate(args):
+        if arg.startswith("--user-data-dir="):
+            return _abs_path(arg.split("=", 1)[1])
+        if arg == "--user-data-dir" and index + 1 < len(args):
+            return _abs_path(args[index + 1])
+    return None
+
+
+def _browser_config_dir_from_process(exe_path: str, args: list[str]) -> Path | None:
+    names = set()
+    values = [exe_path]
+    values.extend(args[:2])
+    for value in values:
+        if value:
+            names.add(Path(value).name.lower())
+
+    text = " ".join(value.lower() for value in values if value)
+    if "/opt/google/chrome-unstable/" in text:
+        return _config_home() / "google-chrome-unstable"
+    if "/opt/google/chrome-beta/" in text:
+        return _config_home() / "google-chrome-beta"
+    if "/opt/google/chrome/" in text:
+        return _config_home() / "google-chrome"
+    if "/opt/brave.com/brave-nightly/" in text:
+        return _config_home() / "BraveSoftware" / "Brave-Browser-Nightly"
+    if "/opt/brave.com/brave-beta/" in text:
+        return _config_home() / "BraveSoftware" / "Brave-Browser-Beta"
+    if "/opt/brave.com/brave/" in text:
+        return _config_home() / "BraveSoftware" / "Brave-Browser"
+    if "/opt/microsoft/msedge-dev/" in text:
+        return _config_home() / "microsoft-edge-dev"
+    if "/opt/microsoft/msedge-beta/" in text:
+        return _config_home() / "microsoft-edge-beta"
+    if "/opt/microsoft/msedge/" in text:
+        return _config_home() / "microsoft-edge"
+
+    for browser_names, config_parts in BROWSER_CONFIG_DIRS:
+        if names.intersection(browser_names):
+            return _config_home().joinpath(*config_parts)
+    return None
+
+
+def _read_process_cmdline(pid: int) -> list[str]:
+    try:
+        data = Path(f"/proc/{pid}/cmdline").read_bytes()
+    except OSError:
+        return []
+    args = [part.decode("utf-8", "replace") for part in data.split(b"\0") if part]
+    if len(args) == 1 and " " in args[0] and (" --" in args[0] or args[0].startswith("/")):
+        try:
+            parsed = shlex.split(args[0])
+        except ValueError:
+            parsed = args[0].split()
+        if parsed:
+            return parsed
+    return args
+
+
+def _read_process_exe(pid: int) -> str:
+    try:
+        return os.readlink(f"/proc/{pid}/exe")
+    except OSError:
+        return ""
+
+
+def _read_parent_pid(pid: int) -> int | None:
+    try:
+        stat = Path(f"/proc/{pid}/stat").read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return None
+    end = stat.rfind(")")
+    if end < 0:
+        return None
+    fields = stat[end + 2:].split()
+    if len(fields) < 2:
+        return None
+    try:
+        return int(fields[1])
+    except ValueError:
+        return None
+
+
+def _process_chain(start_pid: int | None = None, limit: int = 8):
+    pid = start_pid if start_pid is not None else os.getppid()
+    seen = set()
+    for _ in range(limit):
+        if pid <= 1 or pid in seen:
+            return
+        seen.add(pid)
+        args = _read_process_cmdline(pid)
+        exe_path = _read_process_exe(pid)
+        yield pid, exe_path, args
+        parent = _read_parent_pid(pid)
+        if parent is None:
+            return
+        pid = parent
+
+
+def _processes_from_proc():
+    try:
+        proc_entries = list(Path("/proc").iterdir())
+    except OSError:
+        return
+
+    for entry in proc_entries:
+        if not entry.name.isdigit():
+            continue
+        try:
+            pid = int(entry.name)
+        except ValueError:
+            continue
+        yield pid, _read_process_exe(pid), _read_process_cmdline(pid)
+
+
+def _processes_from_ps():
+    try:
+        result = subprocess.run(
+            ["ps", "-ww", "-eo", "pid=,args="],
+            check=False,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.DEVNULL,
+            text=True,
+            timeout=3,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return
+
+    if result.returncode != 0:
+        return
+
+    for line in result.stdout.splitlines():
+        stripped = line.strip()
+        if not stripped:
+            continue
+        pid_text, separator, command = stripped.partition(" ")
+        if not separator or not command:
+            continue
+        try:
+            pid = int(pid_text)
+        except ValueError:
+            continue
+        try:
+            args = shlex.split(command)
+        except ValueError:
+            args = command.split()
+        if not args:
+            continue
+        exe_path = args[0]
+        if exe_path and not exe_path.startswith("/"):
+            exe_path = shutil.which(exe_path) or exe_path
+        yield pid, exe_path, args
+
+
+def _browser_path_from_parent_process() -> str | None:
+    for _pid, exe_path, args in _process_chain():
+        if _browser_config_dir_from_process(exe_path, args):
+            return exe_path or (args[0] if args else None)
+    return None
+
+
+def _process_user_data_dir(exe_path: str, args: list[str]) -> Path | None:
+    return _user_data_dir_from_args(args) or _browser_config_dir_from_process(exe_path, args)
+
+
+def _is_browser_main_process(args: list[str]) -> bool:
+    return bool(args) and not any(arg.startswith("--type=") or " --type=" in arg for arg in args)
+
+
+def _add_restart_candidate(
+    candidates: list[tuple[int, int, str, list[str]]],
+    user_data_dir: Path,
+    pid: int,
+    exe_path: str,
+    args: list[str],
+    base_score: int,
+) -> None:
+    if not _is_browser_main_process(args):
+        return
+
+    process_user_data_dir = _process_user_data_dir(exe_path, args)
+    if process_user_data_dir is None or not _same_path(process_user_data_dir, user_data_dir):
+        return
+
+    browser_path = exe_path or args[0]
+    if not browser_path:
+        return
+
+    score = base_score
+    if _args_load_bundled_extension(args):
+        score += 8
+    if _browser_config_dir_from_process(browser_path, args):
+        score += 4
+    candidates.append((score, pid, browser_path, args))
+
+
+def _running_browser_process(user_data_dir: Path) -> tuple[int, str, list[str]] | None:
+    candidates: list[tuple[int, int, str, list[str]]] = []
+    seen: set[int] = set()
+
+    for pid, exe_path, args in _process_chain(limit=16):
+        seen.add(pid)
+        _add_restart_candidate(candidates, user_data_dir, pid, exe_path, args, 100)
+
+    for pid, exe_path, args in _processes_from_proc():
+        if pid in seen:
+            continue
+        _add_restart_candidate(
+            candidates,
+            user_data_dir,
+            pid,
+            exe_path,
+            args,
+            0,
+        )
+
+    for pid, exe_path, args in _processes_from_ps():
+        _add_restart_candidate(
+            candidates,
+            user_data_dir,
+            pid,
+            exe_path,
+            args,
+            0,
+        )
+
+    if not candidates:
+        return None
+
+    _score, pid, browser_path, args = sorted(candidates, key=lambda item: item[0])[-1]
+    return pid, browser_path, args
+
+
+def _user_data_dir_from_parent_process() -> Path | None:
+    process_infos = list(_process_chain())
+    for _pid, _exe_path, args in process_infos:
+        user_data_dir = _user_data_dir_from_args(args)
+        if user_data_dir:
+            return user_data_dir
+
+    for _pid, exe_path, args in process_infos:
+        browser_dir = _browser_config_dir_from_process(exe_path, args)
+        if browser_dir:
+            return browser_dir
+    return None
+
+
+def _configured_user_data_dir() -> Path | None:
+    if os.environ.get("CHROMIUM_WIDEVINE_DISCOVER_RUNNING_BROWSER"):
+        return None
+    for name in (
+        "CHROMIUM_WIDEVINE_USER_DATA_DIR",
+        "CHROMIUM_USER_DATA_DIR",
+    ):
+        value = os.environ.get(name)
+        if value:
+            return _abs_path(value)
+    return None
+
+
+def _profile_has_bundled_extension(user_data_dir: Path) -> bool:
+    for pref_path in _profile_preference_files(user_data_dir):
+        prefs = _read_json(pref_path, None)
+        if not isinstance(prefs, dict):
+            continue
+        extensions = prefs.get("extensions", {})
+        if not isinstance(extensions, dict):
+            continue
+        settings = extensions.get("settings", {})
+        entry = settings.get(EXTENSION_ID) if isinstance(settings, dict) else None
+        if isinstance(entry, dict) and _extension_entry_matches_bundled_path(entry):
+            return True
+    return False
+
+
+def _valid_extension_id(extension_id: str) -> bool:
+    return bool(re.fullmatch(r"[a-p]{32}", extension_id))
+
+
+def _extension_path_candidates(pref_path: Path, path: str) -> list[Path]:
+    extension_path = Path(path).expanduser()
+    if extension_path.is_absolute():
+        return [extension_path]
+    return [
+        pref_path.parent / "Extensions" / extension_path,
+        pref_path.parent / extension_path,
+    ]
+
+
+def _path_contains_widevine_extension(path: Path) -> bool:
+    manifest = _read_json(path / "manifest.json", {})
+    if not isinstance(manifest, dict):
+        return False
+    if manifest.get("name") != "__MSG_extensionName__":
+        return False
+    if manifest.get("default_locale") != "en":
+        return False
+    permissions = manifest.get("permissions", [])
+    if not isinstance(permissions, list) or "nativeMessaging" not in permissions:
+        return False
+    background = manifest.get("background", {})
+    if not isinstance(background, dict) or background.get("service_worker") != "background.js":
+        return False
+    try:
+        return HOST_NAME in (path / "background.js").read_text(encoding="utf-8", errors="replace")
+    except OSError:
+        return False
+
+
+def _extension_entry_is_widevine(pref_path: Path, entry: dict) -> bool:
+    if _extension_entry_matches_bundled_path(entry):
+        return True
+
+    manifest = entry.get("manifest")
+    if isinstance(manifest, dict):
+        permissions = manifest.get("permissions", [])
+        background = manifest.get("background", {})
+        if (
+            manifest.get("name") == "__MSG_extensionName__"
+            and isinstance(permissions, list)
+            and "nativeMessaging" in permissions
+            and isinstance(background, dict)
+            and background.get("service_worker") == "background.js"
+        ):
+            return True
+
+    path = entry.get("path")
+    if not isinstance(path, str) or not path:
+        return False
+    return any(_path_contains_widevine_extension(candidate) for candidate in _extension_path_candidates(pref_path, path))
+
+
+def _widevine_extension_ids(user_data_dir: Path) -> set[str]:
+    extension_ids = {EXTENSION_ID}
+    for pref_path in _profile_preference_files(user_data_dir):
+        prefs = _read_json(pref_path, None)
+        if not isinstance(prefs, dict):
+            continue
+        settings = prefs.get("extensions", {}).get("settings", {})
+        if not isinstance(settings, dict):
+            continue
+        for extension_id, entry in settings.items():
+            if (
+                isinstance(extension_id, str)
+                and _valid_extension_id(extension_id)
+                and isinstance(entry, dict)
+                and _extension_entry_is_widevine(pref_path, entry)
+            ):
+                extension_ids.add(extension_id)
+    return extension_ids
+
+
+def _args_load_bundled_extension(args: list[str]) -> bool:
+    extension_path = str(EXTENSION_PATH)
+    index = 0
+    while index < len(args):
+        arg = args[index]
+        if arg.startswith("--load-extension="):
+            values = arg.split("=", 1)[1].split(",")
+            if extension_path in values:
+                return True
+        if arg == "--load-extension" and index + 1 < len(args):
+            values = args[index + 1].split(",")
+            if extension_path in values:
+                return True
+            index += 1
+        index += 1
+    return False
+
+
+def _user_data_dir_from_running_browser() -> Path | None:
+    candidates: dict[Path, int] = {}
+    browser_config_dir_value = os.environ.get("CHROMIUM_WIDEVINE_BROWSER_CONFIG_DIR")
+    browser_config_dir = _abs_path(browser_config_dir_value) if browser_config_dir_value else None
+
+    for _pid, exe_path, args in list(_processes_from_proc() or []) + list(_processes_from_ps() or []):
+        user_data_dir = _user_data_dir_from_args(args)
+        if user_data_dir is None:
+            user_data_dir = _browser_config_dir_from_process(exe_path, args)
+        if user_data_dir is None:
+            continue
+
+        score = 1
+        if args and not any(arg.startswith("--type=") for arg in args):
+            score += 2
+        if _args_load_bundled_extension(args):
+            score += 8
+        if _profile_has_bundled_extension(user_data_dir):
+            score += 4
+        if browser_config_dir and _same_path(user_data_dir, browser_config_dir):
+            score += 16
+        candidates[user_data_dir] = max(candidates.get(user_data_dir, 0), score)
+
+    if not candidates:
+        return None
+    return sorted(candidates.items(), key=lambda item: item[1])[-1][0]
+
+
+def _active_user_data_dir(discover_running_browser: bool = False) -> Path:
+    return (
+        _configured_user_data_dir()
+        or _user_data_dir_from_parent_process()
+        or (_user_data_dir_from_running_browser() if discover_running_browser else None)
+        or _default_user_data_dir()
+    )
+
+
+def _parse_user_data_dir(args: list[str], browser_path: str | None = None) -> Path:
+    user_data_dir = _user_data_dir_from_args(args)
+    if user_data_dir:
+        return user_data_dir
+    if browser_path:
+        browser_dir = _browser_config_dir_from_process(browser_path, [browser_path])
+        if browser_dir:
+            return browser_dir
+    return _default_user_data_dir()
+
+
+def _widevine_root(user_data_dir: Path) -> Path:
+    return user_data_dir / WIDEVINE_ROOT_NAME
+
+
+def _state_path(user_data_dir: Path) -> Path:
+    return _widevine_root(user_data_dir) / STATE_FILE_NAME
+
+
+def _hint_path(user_data_dir: Path) -> Path:
+    return _widevine_root(user_data_dir) / HINT_FILE_NAME
+
+
+def _native_log_path(user_data_dir: Path) -> Path:
+    return _widevine_root(user_data_dir) / LOG_FILE_NAME
+
+
+def _extension_version_path(user_data_dir: Path) -> Path:
+    return _widevine_root(user_data_dir) / EXTENSION_VERSION_FILE_NAME
+
+
+def _log_native_event(user_data_dir: Path, event: str, **values) -> None:
+    entry = {
+        "time": time.strftime("%Y-%m-%dT%H:%M:%S%z"),
+        "event": event,
+        "user_data_dir": str(user_data_dir),
+    }
+    entry.update(values)
+    try:
+        _native_log_path(user_data_dir).parent.mkdir(parents=True, exist_ok=True)
+        with _native_log_path(user_data_dir).open("a", encoding="utf-8") as file:
+            file.write(json.dumps(entry, separators=(",", ":")))
+            file.write("\n")
+    except OSError:
+        pass
+
+
+def _native_host_manifest_path(config_dir: Path) -> Path:
+    return config_dir / "NativeMessagingHosts" / f"{HOST_NAME}.json"
+
+
+def _native_host_executable_path() -> str:
+    return str(Path(sys.argv[0]).resolve())
+
+
+def _native_host_manifest(host_path: Path | None = None, extension_ids: set[str] | None = None) -> dict:
+    allowed_extension_ids = extension_ids or {EXTENSION_ID}
+    return {
+        "name": HOST_NAME,
+        "description": "Chromium Widevine installer",
+        "path": str(host_path or _native_host_executable_path()),
+        "type": "stdio",
+        "allowed_origins": [
+            f"chrome-extension://{extension_id}/"
+            for extension_id in sorted(allowed_extension_ids)
+            if _valid_extension_id(extension_id)
+        ],
+    }
+
+
+def _native_host_config_targets(
+    user_data_dir: Path,
+    browser_path: str | None = None,
+) -> list[tuple[Path, Path | None]]:
+    targets: list[tuple[Path, Path | None]] = [(user_data_dir, user_data_dir)]
+    browser_dir = _browser_config_dir_from_process(browser_path, [browser_path] if browser_path else [])
+    if browser_dir:
+        targets.append((browser_dir, user_data_dir))
+
+    # Chromium-based rebrands commonly retain Chromium's native-messaging
+    # lookup root even when their user-data directory uses a custom product name.
+    chromium_dir = _config_home() / "chromium"
+    targets.append((chromium_dir, None))
+
+    for _browser_names, config_parts in BROWSER_CONFIG_DIRS:
+        config_dir = _config_home().joinpath(*config_parts)
+        if config_dir.exists():
+            targets.append((config_dir, config_dir))
+
+    unique = []
+    seen = set()
+    for config_dir, target_user_data_dir in targets:
+        resolved_config_dir = config_dir.expanduser()
+        if resolved_config_dir in seen:
+            continue
+        seen.add(resolved_config_dir)
+        unique.append((
+            resolved_config_dir,
+            target_user_data_dir.expanduser() if target_user_data_dir else None,
+        ))
+    return unique
+
+
+def _native_host_launcher_path(config_dir: Path) -> Path:
+    return config_dir / "NativeMessagingHosts" / f"{HOST_NAME}-launcher"
+
+
+def _native_host_launcher(config_dir: Path, user_data_dir: Path | None) -> str:
+    executable_path = Path(_native_host_executable_path())
+    quoted_executable = shlex.quote(str(executable_path))
+    quoted_config_dir = shlex.quote(str(config_dir))
+    lines = [
+        "#!/bin/sh\n"
+    ]
+    if user_data_dir:
+        lines.append(f"export CHROMIUM_WIDEVINE_USER_DATA_DIR={shlex.quote(str(user_data_dir))}\n")
+    else:
+        lines.append("export CHROMIUM_WIDEVINE_DISCOVER_RUNNING_BROWSER=1\n")
+    lines.append(f"export CHROMIUM_WIDEVINE_BROWSER_CONFIG_DIR={quoted_config_dir}\n")
+    lines.append(f"exec {quoted_executable} \"$@\"\n")
+    return "".join(lines)
+
+
+def _write_native_host_launcher(config_dir: Path, user_data_dir: Path | None) -> Path:
+    launcher_path = _native_host_launcher_path(config_dir)
+    launcher = _native_host_launcher(config_dir, user_data_dir)
+    try:
+        current = launcher_path.read_text(encoding="utf-8")
+        if current == launcher and os.access(launcher_path, os.X_OK):
+            return launcher_path
+    except OSError:
+        pass
+
+    launcher_path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+        "w",
+        encoding="utf-8",
+        dir=str(launcher_path.parent),
+        prefix=f".{launcher_path.name}.",
+        delete=False,
+    ) as file:
+        file.write(launcher)
+        temp_name = file.name
+    os.chmod(temp_name, 0o755)
+    os.replace(temp_name, launcher_path)
+    return launcher_path
+
+
+def _ensure_user_native_host_manifests(user_data_dir: Path, browser_path: str | None = None) -> None:
+    for config_dir, target_user_data_dir in _native_host_config_targets(user_data_dir, browser_path):
+        try:
+            launcher_path = _write_native_host_launcher(config_dir, target_user_data_dir)
+            extension_ids = _widevine_extension_ids(user_data_dir)
+            if target_user_data_dir and not _same_path(target_user_data_dir, user_data_dir):
+                extension_ids.update(_widevine_extension_ids(target_user_data_dir))
+            manifest = _native_host_manifest(launcher_path, extension_ids)
+            manifest_path = _native_host_manifest_path(config_dir)
+            if _read_json(manifest_path, None) == manifest:
+                continue
+            _write_json(manifest_path, manifest)
+        except OSError:
+            continue
+
+
+def _read_json(path: Path, default):
+    try:
+        with path.open("r", encoding="utf-8") as file:
+            return json.load(file)
+    except (FileNotFoundError, json.JSONDecodeError, OSError):
+        return default
+
+
+def _write_json(path: Path, data) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
+    with tempfile.NamedTemporaryFile(
+        "w",
+        encoding="utf-8",
+        dir=str(path.parent),
+        prefix=f".{path.name}.",
+        delete=False,
+    ) as file:
+        json.dump(data, file, separators=(",", ":"))
+        file.write("\n")
+        temp_name = file.name
+    os.replace(temp_name, path)
+
+
+def _read_state(user_data_dir: Path) -> dict:
+    state = _read_json(_state_path(user_data_dir), {})
+    if not isinstance(state, dict):
+        return {}
+    return state
+
+
+def _set_enabled(user_data_dir: Path, enabled: bool, reason: str | None = None) -> None:
+    state = _read_state(user_data_dir)
+    state["enabled"] = bool(enabled)
+    if reason:
+        state["reason"] = reason
+    else:
+        state.pop("reason", None)
+    _write_json(_state_path(user_data_dir), state)
+
+
+def _set_update_checked(user_data_dir: Path) -> None:
+    state = _read_state(user_data_dir)
+    state["last_update_check"] = int(time.time())
+    _write_json(_state_path(user_data_dir), state)
+
+
+def _update_check_due(user_data_dir: Path) -> bool:
+    try:
+        last_check = int(_read_state(user_data_dir).get("last_update_check", 0))
+    except (TypeError, ValueError):
+        return True
+    return time.time() - last_check >= UPDATE_CHECK_INTERVAL_SECONDS
+
+
+def _machine_arch() -> str:
+    machine = (
+        os.environ.get("CHROMIUM_WIDEVINE_ARCH")
+        or platform.machine()
+    ).lower()
+    arch = ARCH_ALIASES.get(machine)
+    if arch:
+        return arch
+    if machine in ("arm", "armv6l", "armv7l", "armv8l"):
+        raise WidevineError(
+            "unsupported_arch",
+            "Google does not publish the Linux Widevine CDM for 32-bit ARM.",
+        )
+    raise WidevineError(
+        "unsupported_arch",
+        f"Unsupported architecture for Widevine: {platform.machine()}",
+    )
+
+
+def _platform_dir_name(arch: str | None = None) -> str:
+    selected_arch = arch or _machine_arch()
+    platform_dir = PLATFORM_DIR_BY_ARCH.get(selected_arch)
+    if platform_dir:
+        return platform_dir
+    raise WidevineError("unsupported_arch", f"Unsupported architecture for Widevine: {selected_arch}")
+
+
+def _cdm_version(path: Path) -> str:
+    manifest = _read_json(path / "manifest.json", {})
+    version = manifest.get("version") if isinstance(manifest, dict) else None
+    if isinstance(version, str):
+        return version.strip()
+    return ""
+
+
+def _cdm_library_path(path: Path) -> Path:
+    return path / "_platform_specific" / _platform_dir_name() / "libwidevinecdm.so"
+
+
+def _library_matches_machine_arch(library_path: Path) -> bool:
+    expected_machine = ELF_MACHINE_BY_ARCH.get(_machine_arch())
+    if expected_machine is None:
+        return False
+    try:
+        with library_path.open("rb") as file:
+            header = file.read(20)
+    except OSError:
+        return False
+
+    if len(header) < 20 or header[:4] != b"\x7fELF":
+        return False
+    if header[5] == 1:
+        byteorder = "little"
+    elif header[5] == 2:
+        byteorder = "big"
+    else:
+        return False
+    return int.from_bytes(header[18:20], byteorder) == expected_machine
+
+
+def _valid_cdm_dir(path: Path) -> bool:
+    try:
+        library_path = _cdm_library_path(path)
+    except WidevineError:
+        return False
+
+    manifest_path = path / "manifest.json"
+    if not manifest_path.is_file() or not library_path.is_file():
+        return False
+    if not _library_matches_machine_arch(library_path):
+        return False
+
+    return bool(_cdm_version(path))
+
+
+def _version_key(path: Path):
+    pieces = []
+    version = _cdm_version(path) or path.name
+    for piece in version.split("."):
+        try:
+            pieces.append(int(piece))
+        except ValueError:
+            pieces.append(-1)
+    return pieces
+
+
+def _system_widevine_dirs() -> list[Path]:
+    paths = []
+    extra_dirs = os.environ.get("CHROMIUM_WIDEVINE_SYSTEM_DIRS") or ""
+    paths.extend(Path(path).expanduser() for path in extra_dirs.split(os.pathsep) if path)
+    paths.extend(Path(path) for path in SYSTEM_WIDEVINE_DIRS)
+
+    unique = []
+    seen = set()
+    for path in paths:
+        if path in seen:
+            continue
+        seen.add(path)
+        unique.append(path)
+    return unique
+
+
+def _installed_cdm_dir(user_data_dir: Path) -> Path | None:
+    hint = _read_json(_hint_path(user_data_dir), {})
+    hinted_path = hint.get("Path") if isinstance(hint, dict) else None
+    if isinstance(hinted_path, str):
+        hinted_dir = Path(hinted_path)
+        if _valid_cdm_dir(hinted_dir):
+            return hinted_dir
+
+    root = _widevine_root(user_data_dir)
+    if _valid_cdm_dir(root):
+        return root
+
+    candidates = []
+    try:
+        for child in root.iterdir():
+            if child.is_dir() and _valid_cdm_dir(child):
+                candidates.append(child)
+    except OSError:
+        pass
+
+    if not candidates:
+        system_candidates = [path for path in _system_widevine_dirs() if _valid_cdm_dir(path)]
+        if not system_candidates:
+            return None
+        return sorted(system_candidates, key=_version_key)[-1]
+    return sorted(candidates, key=_version_key)[-1]
+
+
+def _write_hint(user_data_dir: Path, cdm_dir: Path) -> None:
+    _write_json(_hint_path(user_data_dir), {"Path": str(cdm_dir)})
+
+
+def _remove_hint(user_data_dir: Path) -> None:
+    try:
+        _hint_path(user_data_dir).unlink()
+    except FileNotFoundError:
+        pass
+    except OSError:
+        pass
+
+
+def _profile_preference_files(user_data_dir: Path) -> list[Path]:
+    names = ["Default", "Profile 1", "Profile 2", "Profile 3", "Profile 4"]
+    paths = [user_data_dir / name / "Preferences" for name in names]
+    try:
+        paths.extend(child / "Preferences" for child in user_data_dir.iterdir()
+                     if child.is_dir() and child.name.startswith("Profile "))
+    except OSError:
+        pass
+    unique = []
+    seen = set()
+    for path in paths:
+        if path not in seen:
+            seen.add(path)
+            unique.append(path)
+    return unique
+
+
+def _extension_entry_matches_bundled_path(entry: dict) -> bool:
+    path = entry.get("path")
+    if not isinstance(path, str):
+        return False
+    try:
+        return Path(path).expanduser().resolve() == EXTENSION_PATH.resolve()
+    except OSError:
+        return False
+
+
+def _extension_entry_is_disabled(entry: dict) -> bool:
+    state = entry.get("state")
+    disable_reasons = entry.get("disable_reasons", 0)
+    blacklist_state = entry.get("blacklist_state", 0)
+    return state not in (None, 1) or bool(disable_reasons) or bool(blacklist_state)
+
+
+def _extension_disabled_by_preferences(user_data_dir: Path) -> bool:
+    for pref_path in _profile_preference_files(user_data_dir):
+        prefs = _read_json(pref_path, None)
+        if not isinstance(prefs, dict):
+            continue
+        extensions = prefs.get("extensions", {})
+        if not isinstance(extensions, dict):
+            continue
+        if EXTENSION_ID in extensions.get("external_uninstalls", []):
+            return True
+        if EXTENSION_ID in extensions.get("blacklist", []):
+            return True
+        settings = extensions.get("settings", {})
+        entry = settings.get(EXTENSION_ID) if isinstance(settings, dict) else None
+        if not isinstance(entry, dict):
+            continue
+        if _extension_entry_is_disabled(entry):
+            return True
+    return False
+
+
+def _extension_manifest_version() -> str | None:
+    manifest = _read_json(EXTENSION_PATH / "manifest.json", {})
+    version = manifest.get("version") if isinstance(manifest, dict) else None
+    if isinstance(version, str) and version:
+        return version
+    return None
+
+
+def _stored_extension_version(user_data_dir: Path) -> str:
+    try:
+        return _extension_version_path(user_data_dir).read_text(encoding="utf-8").strip()
+    except OSError:
+        return ""
+
+
+def _write_stored_extension_version(user_data_dir: Path, version: str) -> None:
+    try:
+        path = _extension_version_path(user_data_dir)
+        path.parent.mkdir(parents=True, exist_ok=True)
+        path.write_text(version + "\n", encoding="utf-8")
+    except OSError:
+        pass
+
+
+def _extension_registered_version(entry: dict) -> str | None:
+    service_worker_info = entry.get("service_worker_registration_info")
+    if isinstance(service_worker_info, dict):
+        version = service_worker_info.get("version")
+        if isinstance(version, str) and version:
+            return version
+    version = entry.get("version")
+    if isinstance(version, str) and version:
+        return version
+    return None
+
+
+def _profile_lock_owner_pid(user_data_dir: Path) -> int | None:
+    try:
+        target = os.readlink(user_data_dir / "SingletonLock")
+    except OSError:
+        return None
+
+    match = re.search(r"-(\d+)$", target)
+    if not match:
+        return None
+
+    try:
+        pid = int(match.group(1))
+    except ValueError:
+        return None
+
+    if pid > 1 and Path(f"/proc/{pid}").exists():
+        return pid
+    return None
+
+
+def _service_worker_cache_belongs_to_extension(data: bytes) -> bool:
+    extension_url = f"chrome-extension://{EXTENSION_ID}/background.js".encode("utf-8")
+    extension_id = EXTENSION_ID.encode("utf-8")
+    host_names = (HOST_NAME, *LEGACY_HOST_NAMES)
+    host_needles = tuple(name.encode("utf-8") for name in host_names)
+    return extension_url in data or extension_id in data or any(needle in data for needle in host_needles)
+
+
+def _remove_stale_service_worker_script_cache(user_data_dir: Path, include_current_extension: bool = False) -> bool:
+    removed = False
+    legacy_needles = tuple(name.encode("utf-8") for name in LEGACY_HOST_NAMES)
+
+    for pref_path in _profile_preference_files(user_data_dir):
+        script_cache = pref_path.parent / "Service Worker" / "ScriptCache"
+        try:
+            children = list(script_cache.iterdir())
+        except OSError:
+            continue
+        for child in children:
+            if not child.is_file():
+                continue
+            try:
+                data = child.read_bytes()
+            except OSError:
+                continue
+            legacy_match = any(needle in data for needle in legacy_needles)
+            extension_match = include_current_extension and _service_worker_cache_belongs_to_extension(data)
+            if not legacy_match and not extension_match:
+                continue
+            try:
+                child.unlink()
+                removed = True
+            except OSError:
+                pass
+    return removed
+
+
+def _refresh_stale_extension_registration(user_data_dir: Path) -> None:
+    current_version = _extension_manifest_version()
+    if not current_version or _profile_lock_owner_pid(user_data_dir):
+        return
+
+    needs_version_refresh = _stored_extension_version(user_data_dir) != current_version
+    removed_stale_cache = _remove_stale_service_worker_script_cache(
+        user_data_dir,
+        include_current_extension=needs_version_refresh,
+    )
+    changed = False
+
+    for pref_path in _profile_preference_files(user_data_dir):
+        prefs = _read_json(pref_path, None)
+        if not isinstance(prefs, dict):
+            continue
+        extensions = prefs.get("extensions")
+        if not isinstance(extensions, dict):
+            continue
+        settings = extensions.get("settings")
+        if not isinstance(settings, dict):
+            continue
+
+        entry = settings.get(EXTENSION_ID)
+        if not isinstance(entry, dict):
+            continue
+        if _extension_entry_is_disabled(entry):
+            continue
+        if not _extension_entry_matches_bundled_path(entry):
+            continue
+
+        registered_version = _extension_registered_version(entry)
+        if (
+            needs_version_refresh
+            or removed_stale_cache
+            or (registered_version and registered_version != current_version)
+        ):
+            del settings[EXTENSION_ID]
+            _write_json(pref_path, prefs)
+            changed = True
+
+    if changed and not needs_version_refresh:
+        removed_stale_cache = _remove_stale_service_worker_script_cache(
+            user_data_dir,
+            include_current_extension=True,
+        ) or removed_stale_cache
+
+    if changed or removed_stale_cache or needs_version_refresh:
+        _write_stored_extension_version(user_data_dir, current_version)
+
+
+def _extension_disabled_by_args(args: list[str]) -> bool:
+    return any(arg == "--disable-extensions" for arg in args)
+
+
+def _state_enabled(user_data_dir: Path) -> bool:
+    return _read_state(user_data_dir).get("enabled") is True
+
+
+def _ensure_hint_for_launch(user_data_dir: Path, args: list[str]) -> None:
+    if _extension_disabled_by_args(args):
+        _remove_hint(user_data_dir)
+        return
+
+    if _extension_disabled_by_preferences(user_data_dir):
+        _set_enabled(user_data_dir, False, "extension_disabled")
+        _remove_hint(user_data_dir)
+        return
+
+    if not _state_enabled(user_data_dir):
+        _remove_hint(user_data_dir)
+        return
+
+    cdm_dir = _installed_cdm_dir(user_data_dir)
+    if cdm_dir is None:
+        _set_enabled(user_data_dir, False, "missing_cdm")
+        _remove_hint(user_data_dir)
+        return
+
+    _write_hint(user_data_dir, cdm_dir)
+
+
+def _append_unique_load_extension(existing: str, extension_path: Path) -> str:
+    extension = str(extension_path)
+    values = [value for value in existing.split(",") if value]
+    if extension not in values:
+        values.append(extension)
+    return ",".join(values)
+
+
+def _inject_extension_arg(args: list[str], user_data_dir: Path) -> list[str]:
+    if (
+        not EXTENSION_PATH.is_dir()
+        or _extension_disabled_by_args(args)
+        or _extension_disabled_by_preferences(user_data_dir)
+    ):
+        return args
+
+    result = []
+    injected = False
+    index = 0
+    while index < len(args):
+        arg = args[index]
+        if arg.startswith("--load-extension="):
+            value = arg.split("=", 1)[1]
+            result.append("--load-extension=" + _append_unique_load_extension(value, EXTENSION_PATH))
+            injected = True
+            index += 1
+            continue
+        if arg == "--load-extension" and index + 1 < len(args):
+            result.extend([arg, _append_unique_load_extension(args[index + 1], EXTENSION_PATH)])
+            injected = True
+            index += 2
+            continue
+        result.append(arg)
+        index += 1
+
+    if not injected:
+        result.append("--load-extension=" + str(EXTENSION_PATH))
+    return result
+
+
+def _chromium_version(browser_path: str | None = None) -> str:
+    for candidate in (
+        os.environ.get("CHROMIUM_WIDEVINE_CHROMIUM_VERSION"),
+        None,
+    ):
+        if candidate and re.fullmatch(r"\d+\.\d+\.\d+\.\d+", candidate):
+            return candidate
+
+    command_candidates = []
+    if browser_path:
+        command_candidates.append(browser_path)
+    env_browser = os.environ.get("CHROMIUM_WIDEVINE_BROWSER_PATH")
+    if env_browser:
+        command_candidates.append(env_browser)
+    parent_browser = _browser_path_from_parent_process()
+    if parent_browser:
+        command_candidates.append(parent_browser)
+
+    for candidate in command_candidates:
+        try:
+            output = subprocess.check_output(
+                [candidate, "--version"],
+                stderr=subprocess.DEVNULL,
+                timeout=5,
+                text=True,
+            )
+        except (OSError, subprocess.SubprocessError):
+            continue
+        match = re.search(r"Chromium\s+(\d+\.\d+\.\d+\.\d+)", output)
+        if match:
+            return match.group(1)
+    return DEFAULT_CHROMIUM_VERSION
+
+
+def _resolve_browser_path(browser: str) -> str | None:
+    if "/" in browser:
+        path = _abs_path(browser)
+        return str(path) if path.exists() else None
+
+    candidates = (browser, *BROWSER_ALIASES.get(browser, ()))
+    for candidate in candidates:
+        resolved = shutil.which(candidate)
+        if resolved:
+            return resolved
+    return None
+
+
+def _has_internet() -> bool:
+    request = urllib.request.Request(
+        CONNECTIVITY_URL,
+        headers={"User-Agent": USER_AGENT},
+        method="GET",
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=8) as response:
+            return response.status in (200, 204)
+    except urllib.error.HTTPError as error:
+        return 200 <= error.code < 500
+    except (OSError, TimeoutError, urllib.error.URLError, socket.timeout):
+        return False
+
+
+def _post_json(url: str, payload: dict) -> dict:
+    request = urllib.request.Request(
+        url,
+        data=json.dumps(payload, separators=(",", ":")).encode("utf-8"),
+        headers={
+            "Content-Type": "application/json",
+            "User-Agent": USER_AGENT,
+            "X-Goog-Update-Interactivity": "fg",
+            "X-Goog-Update-AppId": WIDEVINE_APP_ID,
+            "X-Goog-Update-Updater": UPDATER_NAME,
+        },
+    )
+    try:
+        with urllib.request.urlopen(request, timeout=30) as response:
+            body = response.read().decode("utf-8", "replace")
+    except urllib.error.HTTPError as error:
+        raise WidevineError(
+            "download_failed",
+            f"Google returned HTTP {error.code} for the Widevine update request.",
+        ) from error
+    except (OSError, TimeoutError, urllib.error.URLError, socket.timeout) as error:
+        raise WidevineError(
+            "internet_required",
+            "An internet connection is required in order to download the Widevine plugin.",
+        ) from error
+
+    if body.startswith(XSSI_PREFIX):
+        body = body[len(XSSI_PREFIX):]
+    return json.loads(body)
+
+
+def _component_request_version(version: str) -> str:
+    if re.fullmatch(r"\d+\.\d+\.\d+\.\d+", version):
+        return version
+    return INSTALLED_VERSION_FLOOR
+
+
+def _resolve_widevine_crx(
+    installed_version: str = INSTALLED_VERSION_FLOOR,
+    missing_install: bool = True,
+) -> tuple[str, list[str], str] | None:
+    arch = _machine_arch()
+    chromium_version = _chromium_version()
+    payload = {
+        "request": {
+            "@os": "linux",
+            "@updater": UPDATER_NAME,
+            "acceptformat": "crx3,download,puff,run,xz,zucc",
+            "apps": [{
+                "appid": WIDEVINE_APP_ID,
+                "installsource": "ondemand",
+                "updatecheck": {},
+                "version": _component_request_version(installed_version),
+            }],
+            "dedup": "cr",
+            "ismachine": False,
+            "arch": arch,
+            "os": {"arch": arch, "platform": "linux"},
+            "protocol": "4.0",
+            "updaterversion": chromium_version,
+        }
+    }
+    response = _post_json(UPDATE_URL, payload)
+    app = response.get("response", {}).get("apps", [{}])[0]
+    if app.get("status") != "ok":
+        raise WidevineError("download_failed", "Google did not return a Widevine component.")
+
+    updatecheck = app.get("updatecheck", {})
+    if updatecheck.get("status") != "ok":
+        if updatecheck.get("status") == "noupdate":
+            if missing_install and arch == "arm64":
+                raise WidevineError(
+                    "unsupported_arch",
+                    "Google does not publish the Linux Widevine CDM for this architecture.",
+                )
+            return None
+        raise WidevineError("download_failed", "Google did not return a Widevine download.")
+
+    version = updatecheck.get("nextversion")
+    urls = []
+    sha256_hex = None
+    for pipeline in updatecheck.get("pipelines", []):
+        for operation in pipeline.get("operations", []):
+            if operation.get("type") == "download":
+                for url_entry in operation.get("urls", []):
+                    url = url_entry.get("url")
+                    if isinstance(url, str):
+                        urls.append(url)
+                out = operation.get("out", {})
+                sha256_hex = out.get("sha256") or sha256_hex
+
+    https_urls = [url for url in urls if url.startswith("https://")]
+    selected_urls = https_urls or urls
+    if not isinstance(version, str) or not selected_urls:
+        raise WidevineError("download_failed", "The Widevine update response was incomplete.")
+    return version, selected_urls, sha256_hex or ""
+
+
+def _download(urls: list[str], expected_sha256: str) -> bytes:
+    errors = []
+    for url in urls:
+        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        try:
+            with urllib.request.urlopen(request, timeout=180) as response:
+                data = response.read()
+            if expected_sha256:
+                digest = hashlib.sha256(data).hexdigest()
+                if digest.lower() != expected_sha256.lower():
+                    raise WidevineError("download_failed", "The Widevine download checksum did not match.")
+            return data
+        except WidevineError:
+            raise
+        except (OSError, TimeoutError, urllib.error.URLError, socket.timeout) as error:
+            errors.append(str(error))
+            continue
+    raise WidevineError("download_failed", "Widevine download failed.")
+
+
+def _crx_zip_payload(data: bytes) -> bytes:
+    if data.startswith(b"PK\x03\x04"):
+        return data
+    if data[:4] != b"Cr24":
+        raise WidevineError("download_failed", "The Widevine download was not a CRX package.")
+    version = struct.unpack_from("<I", data, 4)[0]
+    if version == 3:
+        header_size = struct.unpack_from("<I", data, 8)[0]
+        offset = 12 + header_size
+    elif version == 2:
+        public_key_size, signature_size = struct.unpack_from("<II", data, 8)
+        offset = 16 + public_key_size + signature_size
+    else:
+        raise WidevineError("download_failed", f"Unsupported CRX version: {version}")
+    return data[offset:]
+
+
+def _safe_extract(zip_file: zipfile.ZipFile, destination: Path) -> None:
+    destination_root = destination.resolve()
+    for member in zip_file.infolist():
+        target = (destination / member.filename).resolve()
+        if os.path.commonpath([str(destination_root), str(target)]) != str(destination_root):
+            raise WidevineError("download_failed", "The Widevine package contains an unsafe path.")
+    zip_file.extractall(destination)
+
+
+def _install_crx(user_data_dir: Path, data: bytes) -> Path:
+    root = _widevine_root(user_data_dir)
+    root.mkdir(parents=True, exist_ok=True)
+    temp_dir = Path(tempfile.mkdtemp(prefix=".install-", dir=str(root)))
+
+    try:
+        with zipfile.ZipFile(io.BytesIO(_crx_zip_payload(data))) as zip_file:
+            _safe_extract(zip_file, temp_dir)
+        manifest = _read_json(temp_dir / "manifest.json", {})
+        version = manifest.get("version") if isinstance(manifest, dict) else None
+        if not isinstance(version, str) or not version:
+            raise WidevineError("download_failed", "The Widevine manifest did not include a version.")
+        if not _valid_cdm_dir(temp_dir):
+            raise WidevineError("download_failed", "The Widevine package did not contain the expected CDM files.")
+
+        destination = root / version
+        if destination.exists():
+            shutil.rmtree(destination)
+        os.replace(temp_dir, destination)
+        return destination
+    except Exception:
+        if temp_dir.exists():
+            shutil.rmtree(temp_dir, ignore_errors=True)
+        raise
+
+
+def _status(user_data_dir: Path) -> dict:
+    cdm_dir = _installed_cdm_dir(user_data_dir)
+    enabled = _state_enabled(user_data_dir) and cdm_dir is not None
+    return _json_response(
+        True,
+        enabled=enabled,
+        installed=cdm_dir is not None,
+        path=str(cdm_dir) if cdm_dir else "",
+        user_message="Widevine is enabled." if enabled else "Widevine is disabled.",
+    )
+
+
+def _update(user_data_dir: Path, force: bool = False) -> dict:
+    cdm_dir = _installed_cdm_dir(user_data_dir)
+    enabled = _state_enabled(user_data_dir) and cdm_dir is not None
+    if cdm_dir is None:
+        return _json_response(
+            True,
+            enabled=False,
+            installed=False,
+            updated=False,
+            user_message="Widevine is disabled.",
+        )
+
+    current_version = _cdm_version(cdm_dir)
+    if not force and not _update_check_due(user_data_dir):
+        if enabled:
+            _write_hint(user_data_dir, cdm_dir)
+        return _json_response(
+            True,
+            enabled=enabled,
+            installed=True,
+            updated=False,
+            latest=False,
+            skipped=True,
+            version=current_version,
+            path=str(cdm_dir),
+            user_message="Widevine is enabled." if enabled else "Widevine is disabled.",
+        )
+
+    _set_update_checked(user_data_dir)
+    if not _has_internet():
+        if enabled:
+            _write_hint(user_data_dir, cdm_dir)
+        return _json_response(
+            True,
+            enabled=enabled,
+            installed=True,
+            updated=False,
+            code="internet_required",
+            version=current_version,
+            path=str(cdm_dir),
+            user_message="Widevine is enabled." if enabled else "Widevine is disabled.",
+        )
+
+    try:
+        resolved = _resolve_widevine_crx(current_version, missing_install=False)
+        if resolved is None:
+            if enabled:
+                _write_hint(user_data_dir, cdm_dir)
+            return _json_response(
+                True,
+                enabled=enabled,
+                installed=True,
+                updated=False,
+                latest=True,
+                version=current_version,
+                path=str(cdm_dir),
+                user_message="Widevine is enabled." if enabled else "Widevine is disabled.",
+            )
+
+        version, urls, sha256_hex = resolved
+        crx_data = _download(urls, sha256_hex)
+        cdm_dir = _install_crx(user_data_dir, crx_data)
+    except WidevineError as error:
+        if enabled:
+            _write_hint(user_data_dir, cdm_dir)
+        return _json_response(
+            True,
+            enabled=enabled,
+            installed=True,
+            updated=False,
+            code=error.code,
+            update_error=True,
+            version=current_version,
+            path=str(cdm_dir),
+            user_message="Widevine is enabled." if enabled else "Widevine is disabled.",
+        )
+
+    if enabled:
+        _write_hint(user_data_dir, cdm_dir)
+    return _json_response(
+        True,
+        enabled=enabled,
+        installed=True,
+        updated=True,
+        latest=True,
+        version=version,
+        path=str(cdm_dir),
+        needs_restart=enabled,
+        user_message="Widevine is enabled." if enabled else "Widevine is disabled.",
+    )
+
+
+def _enable(user_data_dir: Path) -> dict:
+    cdm_dir = _installed_cdm_dir(user_data_dir)
+    if cdm_dir is not None:
+        _set_enabled(user_data_dir, True)
+        update_response = _update(user_data_dir, force=True)
+        updated_dir = _installed_cdm_dir(user_data_dir)
+        if updated_dir is not None:
+            cdm_dir = updated_dir
+        _write_hint(user_data_dir, cdm_dir)
+        return _json_response(
+            True,
+            enabled=True,
+            installed=True,
+            version=_cdm_version(cdm_dir),
+            path=str(cdm_dir),
+            needs_restart=True,
+            updated=bool(update_response.get("updated")),
+            user_message=(
+                "Widevine was installed. Restart your browser to load it."
+                if update_response.get("updated")
+                else "Widevine is enabled. Restart your browser to load it."
+            ),
+        )
+
+    if not _has_internet():
+        _set_enabled(user_data_dir, False, "internet_required")
+        _remove_hint(user_data_dir)
+        return _json_response(
+            False,
+            code="internet_required",
+            enabled=False,
+            installed=False,
+            user_message="An internet connection is required in order to download the Widevine plugin.",
+        )
+
+    try:
+        resolved = _resolve_widevine_crx()
+        if resolved is None:
+            raise WidevineError("download_failed", "Google did not return a Widevine download.")
+        version, urls, sha256_hex = resolved
+        crx_data = _download(urls, sha256_hex)
+        cdm_dir = _install_crx(user_data_dir, crx_data)
+    except WidevineError as error:
+        _set_enabled(user_data_dir, False, error.code)
+        _remove_hint(user_data_dir)
+        return _json_response(
+            False,
+            code=error.code,
+            enabled=False,
+            installed=False,
+            user_message=error.message,
+        )
+
+    _set_enabled(user_data_dir, True)
+    _write_hint(user_data_dir, cdm_dir)
+    return _json_response(
+        True,
+        enabled=True,
+        installed=True,
+        version=version,
+        installed_now=True,
+        path=str(cdm_dir),
+        needs_restart=True,
+        user_message="Widevine was installed. Restart your browser to load it.",
+    )
+
+
+def _disable(user_data_dir: Path) -> dict:
+    _set_enabled(user_data_dir, False)
+    _remove_hint(user_data_dir)
+    return _json_response(
+        True,
+        enabled=False,
+        installed=_installed_cdm_dir(user_data_dir) is not None,
+        user_message="Widevine is disabled.",
+    )
+
+
+def _process_exists(pid: int) -> bool:
+    try:
+        os.kill(pid, 0)
+        return True
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+
+
+def _wait_for_process_exit(pid: int, timeout: float = 20.0) -> bool:
+    deadline = time.monotonic() + timeout
+    while time.monotonic() < deadline:
+        if not _process_exists(pid):
+            return True
+        time.sleep(0.2)
+    return not _process_exists(pid)
+
+
+def _restart_launch_args(browser_path: str, browser_args: list[str], user_data_dir: Path) -> list[str]:
+    result = list(browser_args)
+    default_user_data_dir = _browser_config_dir_from_process(browser_path, [browser_path])
+    if (
+        _user_data_dir_from_args(result) is None
+        and (default_user_data_dir is None or not _same_path(default_user_data_dir, user_data_dir))
+    ):
+        result.append(f"--user-data-dir={user_data_dir}")
+    if "--restore-last-session" not in result:
+        result.append("--restore-last-session")
+    return result
+
+
+def _restart(user_data_dir: Path) -> dict:
+    status = _status(user_data_dir)
+    browser_process = _running_browser_process(user_data_dir)
+    if browser_process is None:
+        return _json_response(
+            False,
+            enabled=status.get("enabled", False),
+            installed=status.get("installed", False),
+            code="restart_unavailable",
+            user_message="Unable to restart the browser automatically.",
+        )
+
+    pid, browser_path, process_args = browser_process
+    browser_args = process_args[1:] if process_args else []
+    launch_args = _restart_launch_args(browser_path, browser_args, user_data_dir)
+    try:
+        _ensure_hint_for_launch(user_data_dir, launch_args)
+        subprocess.Popen(
+            [
+                _native_host_executable_path(),
+                "--restart-helper",
+                str(pid),
+                browser_path,
+                *launch_args,
+            ],
+            stdin=subprocess.DEVNULL,
+            stdout=subprocess.DEVNULL,
+            stderr=subprocess.DEVNULL,
+            close_fds=True,
+            start_new_session=True,
+        )
+    except OSError as error:
+        return _json_response(
+            False,
+            enabled=status.get("enabled", False),
+            installed=status.get("installed", False),
+            code="restart_failed",
+            user_message=str(error),
+        )
+
+    return _json_response(
+        True,
+        enabled=status.get("enabled", False),
+        installed=status.get("installed", False),
+        restarting=True,
+        user_message="Restarting browser...",
+    )
+
+
+def _handle_command(message: dict) -> dict:
+    user_data_dir = _active_user_data_dir(discover_running_browser=True)
+    command = message.get("command")
+    lock_path = _widevine_root(user_data_dir) / ".lock"
+    lock_path.parent.mkdir(parents=True, exist_ok=True)
+    with lock_path.open("w", encoding="utf-8") as lock:
+        fcntl.flock(lock, fcntl.LOCK_EX)
+        if command == "status":
+            response = _status(user_data_dir)
+        elif command == "enable":
+            response = _enable(user_data_dir)
+        elif command == "disable":
+            response = _disable(user_data_dir)
+        elif command == "update":
+            response = _update(user_data_dir)
+        elif command == "restart":
+            response = _restart(user_data_dir)
+        else:
+            response = _json_response(False, code="bad_command", user_message="Unknown Widevine command.")
+    _log_native_event(
+        user_data_dir,
+        "command",
+        command=str(command),
+        ok=response.get("ok"),
+        code=response.get("code", ""),
+        enabled=response.get("enabled"),
+        installed=response.get("installed"),
+        path=response.get("path", ""),
+    )
+    return response
+
+
+def _read_native_message() -> dict | None:
+    raw_length = sys.stdin.buffer.read(4)
+    if len(raw_length) == 0:
+        return None
+    if len(raw_length) != 4:
+        raise WidevineError("bad_message", "Invalid native message length.")
+    message_length = struct.unpack("<I", raw_length)[0]
+    payload = sys.stdin.buffer.read(message_length)
+    if len(payload) != message_length:
+        raise WidevineError("bad_message", "Incomplete native message.")
+    return json.loads(payload.decode("utf-8"))
+
+
+def _write_native_message(message: dict) -> None:
+    payload = json.dumps(message, separators=(",", ":")).encode("utf-8")
+    sys.stdout.buffer.write(struct.pack("<I", len(payload)))
+    sys.stdout.buffer.write(payload)
+    sys.stdout.buffer.flush()
+
+
+def _native_host_main() -> int:
+    try:
+        message = _read_native_message()
+        if message is None:
+            return 0
+        response = _handle_command(message)
+    except WidevineError as error:
+        response = _json_response(False, code=error.code, user_message=error.message)
+    except Exception as error:
+        response = _json_response(False, code="internal_error", user_message=str(error))
+    _write_native_message(response)
+    return 0
+
+
+def _restart_helper_main(argv: list[str]) -> int:
+    if len(argv) < 2:
+        return 2
+    try:
+        browser_pid = int(argv[0])
+    except ValueError:
+        return 2
+
+    browser_path = argv[1]
+    browser_args = argv[2:]
+    time.sleep(0.5)
+
+    if _process_exists(browser_pid):
+        try:
+            os.kill(browser_pid, signal.SIGTERM)
+        except ProcessLookupError:
+            pass
+        except OSError:
+            return 1
+
+    if not _wait_for_process_exit(browser_pid):
+        return 1
+
+    return _launch_main([browser_path, *browser_args])
+
+
+def _launch_main(argv: list[str]) -> int:
+    if not argv:
+        print("missing browser path", file=sys.stderr)
+        return 2
+
+    browser_path = argv[0]
+    browser_args = argv[1:]
+    resolved_browser_path = _resolve_browser_path(browser_path)
+    if resolved_browser_path is None:
+        print(f"browser not found: {browser_path}", file=sys.stderr)
+        return 2
+    browser_path = resolved_browser_path
+
+    user_data_dir = _parse_user_data_dir(browser_args, browser_path)
+    os.environ["CHROMIUM_WIDEVINE_USER_DATA_DIR"] = str(user_data_dir)
+    os.environ["CHROMIUM_WIDEVINE_BROWSER_PATH"] = browser_path
+    os.environ["CHROMIUM_WIDEVINE_CHROMIUM_VERSION"] = _chromium_version(browser_path)
+
+    try:
+        _ensure_user_native_host_manifests(user_data_dir, browser_path)
+    except OSError:
+        pass
+
+    _refresh_stale_extension_registration(user_data_dir)
+    _ensure_hint_for_launch(user_data_dir, browser_args)
+    final_args = _inject_extension_arg(browser_args, user_data_dir)
+    os.execv(browser_path, [browser_path] + final_args)
+    return 127
+
+
+def _cli_main(argv: list[str]) -> int:
+    user_data_dir = _active_user_data_dir()
+    if argv and argv[0] == "--user-data-dir" and len(argv) > 1:
+        user_data_dir = _abs_path(argv[1])
+        argv = argv[2:]
+    if not argv or argv[0] == "--status":
+        print(json.dumps(_status(user_data_dir), indent=2))
+        return 0
+    if argv[0] == "--enable":
+        print(json.dumps(_enable(user_data_dir), indent=2))
+        return 0
+    if argv[0] == "--disable":
+        print(json.dumps(_disable(user_data_dir), indent=2))
+        return 0
+    if argv[0] == "--update":
+        print(json.dumps(_update(user_data_dir, force=True), indent=2))
+        return 0
+    if argv[0] == "--restart":
+        print(json.dumps(_restart(user_data_dir), indent=2))
+        return 0
+    if argv[0] == "--install-native-hosts":
+        browser_path = None
+        browser_args: list[str] = []
+        if len(argv) > 1:
+            browser_path = _resolve_browser_path(argv[1])
+            if browser_path is None:
+                print(f"browser not found: {argv[1]}", file=sys.stderr)
+                return 2
+            browser_args = argv[2:]
+            user_data_dir = _parse_user_data_dir(browser_args, browser_path)
+        _ensure_user_native_host_manifests(user_data_dir, browser_path)
+        print(json.dumps(
+            _json_response(
+                True,
+                user_data_dir=str(user_data_dir),
+                extension_ids=sorted(_widevine_extension_ids(user_data_dir)),
+            ),
+            indent=2,
+        ))
+        return 0
+    print(
+        f"usage: {Path(sys.argv[0]).name} "
+        "[--status|--enable|--disable|--update|--restart|--install-native-hosts [browser]]",
+        file=sys.stderr,
+    )
+    return 2
+
+
+def main(argv: list[str]) -> int:
+    if argv and argv[0] == "--restart-helper":
+        return _restart_helper_main(argv[1:])
+    if argv and argv[0] == "--launch":
+        return _launch_main(argv[1:])
+    if argv and argv[0].startswith("chrome-extension://"):
+        return _native_host_main()
+    if argv and not argv[0].startswith("--"):
+        return _launch_main(argv)
+    if argv and argv[0].startswith("--"):
+        return _cli_main(argv)
+    if sys.stdin.isatty():
+        print(
+            f"usage: {Path(sys.argv[0]).name} "
+            "[--status|--enable|--disable|--update|--restart|--install-native-hosts [browser]] "
+            "[--launch] <browser> [browser arguments...]",
+            file=sys.stderr,
+        )
+        return 2
+    return _native_host_main()
+
+
+if __name__ == "__main__":
+    raise SystemExit(main(sys.argv[1:]))

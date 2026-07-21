@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Chromium కోసం Widevine CDM ను డౌన్‌లోడ్ చేసి ఆన్/ఆఫ్ చేస్తుంది."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "స్థితి తనిఖీ చేస్తోంది..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Widevine ప్రారంభించండి"
+  },
+  "summaryEnabled": {
+    "message": "ప్రారంభం"
+  },
+  "summaryDisabled": {
+    "message": "నిలిపివేసింది"
+  },
+  "summaryWorking": {
+    "message": "పని చేస్తోంది"
+  },
+  "widevineEnabled": {
+    "message": "Widevine ప్రారంభించబడింది."
+  },
+  "widevineDisabled": {
+    "message": "Widevine నిలిపివేయబడింది."
+  },
+  "enablingWidevine": {
+    "message": "Widevine ప్రారంభిస్తోంది..."
+  },
+  "disablingWidevine": {
+    "message": "Widevine నిలిపివేస్తోంది..."
+  },
+  "downloadingWidevine": {
+    "message": "Widevine ప్లగిన్ డౌన్‌లోడ్ అవుతోంది, దయచేసి వేచి ఉండండి"
+  },
+  "extensionContactError": {
+    "message": "Widevine ఎక్స్‌టెన్షన్‌ను సంప్రదించలేకపోయింది."
+  },
+  "extensionNoResponse": {
+    "message": "Widevine ఎక్స్‌టెన్షన్ స్పందించలేదు."
+  },
+  "installerContactError": {
+    "message": "Widevine డౌన్‌లోడ్ విఫలమైంది."
+  },
+  "installerNoResponse": {
+    "message": "Widevine ఇన్‌స్టాలర్ స్పందించలేదు."
+  },
+  "unknownCommand": {
+    "message": "తెలియని Widevine కమాండ్."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin అవసరం"
+  },
+  "restartTitle": {
+    "message": "browser ను మళ్లీ ప్రారంభించండి"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "DRM రక్షిత కంటెంట్‌ను ప్లే చేయడానికి ఈ సైట్‌కు Google Widevine plugin అవసరం"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "DRM రక్షిత కంటెంట్‌ను ప్లే చేయడానికి ఈ సైట్‌కు Google Widevine plugin అవసరం, కానీ Google Widevine plugin సహాయకం అందుబాటులో లేదు."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "DRM రక్షిత కంటెంట్‌ను ప్లే చేయడానికి ఈ సైట్‌కు Google Widevine plugin అవసరం. ప్రారంభించిన ప్లగిన్ లోడ్ కావడానికి browser ను మళ్లీ ప్రారంభించండి."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "DRM రక్షిత కంటెంట్‌ను ప్లే చేయడానికి ఈ సైట్‌కు Google Widevine plugin అవసరం. Google Widevine plugin ప్రారంభించి, తర్వాత browser ను మళ్లీ ప్రారంభించండి."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "DRM రక్షిత కంటెంట్‌ను ప్లే చేయడానికి ఈ సైట్‌కు Google Widevine plugin అవసరం. ప్లగిన్ డౌన్‌లోడ్ చేయడానికి Google Widevine plugin ప్రారంభించండి."
+  },
+  "enableButton": {
+    "message": "ప్రారంభించండి"
+  },
+  "dismissButton": {
+    "message": "మూసివేయి"
+  },
+  "workingButton": {
+    "message": "పని చేస్తోంది"
+  },
+  "enableFailed": {
+    "message": "Widevine ప్రారంభించలేకపోయింది."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine ప్రారంభించబడింది. దాన్ని లోడ్ చేయడానికి browser ను మళ్లీ ప్రారంభించండి."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine ఇన్‌స్టాల్ అయింది. దాన్ని లోడ్ చేయడానికి browser ను మళ్లీ ప్రారంభించండి."
+  },
+  "internetRequired": {
+    "message": "Widevine ప్లగిన్ డౌన్‌లోడ్ చేయడానికి ఇంటర్నెట్ కనెక్షన్ అవసరం."
+  },
+  "downloadFailed": {
+    "message": "Widevine డౌన్‌లోడ్ విఫలమైంది."
+  },
+  "unsupportedArch": {
+    "message": "Google ఈ ఆర్కిటెక్చర్ కోసం Linux Widevine CDM ను ప్రచురించదు."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "పునఃప్రారంభించు"
+  },
+  "restartingBrowser": {
+    "message": "బ్రౌజర్ పునఃప్రారంభమవుతోంది..."
+  },
+  "restartFailed": {
+    "message": "బ్రౌజర్‌ను పునఃప్రారంభించలేకపోయింది."
+  },
+  "restartUnavailable": {
+    "message": "బ్రౌజర్‌ను స్వయంచాలకంగా పునఃప్రారంభించలేకపోయింది."
+  }
+}

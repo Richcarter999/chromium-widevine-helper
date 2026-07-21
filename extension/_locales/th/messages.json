@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "ดาวน์โหลดและเปิดหรือปิด Widevine CDM สำหรับ Chromium"
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "กำลังตรวจสอบสถานะ..."
+  },
+  "toggleEnableWidevine": {
+    "message": "เปิดใช้ Widevine"
+  },
+  "summaryEnabled": {
+    "message": "เปิดใช้แล้ว"
+  },
+  "summaryDisabled": {
+    "message": "ปิดใช้แล้ว"
+  },
+  "summaryWorking": {
+    "message": "กำลังทำงาน"
+  },
+  "widevineEnabled": {
+    "message": "เปิดใช้ Widevine แล้ว"
+  },
+  "widevineDisabled": {
+    "message": "ปิดใช้ Widevine แล้ว"
+  },
+  "enablingWidevine": {
+    "message": "กำลังเปิดใช้ Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "กำลังปิดใช้ Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "กำลังดาวน์โหลดปลั๊กอิน Widevine โปรดรอสักครู่"
+  },
+  "extensionContactError": {
+    "message": "ไม่สามารถติดต่อส่วนขยาย Widevine ได้"
+  },
+  "extensionNoResponse": {
+    "message": "ส่วนขยาย Widevine ไม่ตอบสนอง"
+  },
+  "installerContactError": {
+    "message": "ดาวน์โหลด Widevine ไม่สำเร็จ"
+  },
+  "installerNoResponse": {
+    "message": "โปรแกรมติดตั้ง Widevine ไม่ตอบสนอง"
+  },
+  "unknownCommand": {
+    "message": "คำสั่ง Widevine ไม่รู้จัก"
+  },
+  "noticeTitle": {
+    "message": "ต้องใช้ Google Widevine plugin"
+  },
+  "restartTitle": {
+    "message": "รีสตาร์ท browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "ไซต์นี้ต้องใช้ Google Widevine plugin เพื่อเล่นเนื้อหาที่ป้องกันด้วย DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "ไซต์นี้ต้องใช้ Google Widevine plugin เพื่อเล่นเนื้อหาที่ป้องกันด้วย DRM แต่ตัวช่วย Google Widevine plugin ไม่พร้อมใช้งาน"
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "ไซต์นี้ต้องใช้ Google Widevine plugin เพื่อเล่นเนื้อหาที่ป้องกันด้วย DRM รีสตาร์ท browser เพื่อโหลดปลั๊กอินที่เปิดใช้แล้ว"
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "ไซต์นี้ต้องใช้ Google Widevine plugin เพื่อเล่นเนื้อหาที่ป้องกันด้วย DRM เปิดใช้ Google Widevine plugin แล้วรีสตาร์ท browser"
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "ไซต์นี้ต้องใช้ Google Widevine plugin เพื่อเล่นเนื้อหาที่ป้องกันด้วย DRM เปิดใช้ Google Widevine plugin เพื่อดาวน์โหลดปลั๊กอิน"
+  },
+  "enableButton": {
+    "message": "เปิดใช้"
+  },
+  "dismissButton": {
+    "message": "ปิด"
+  },
+  "workingButton": {
+    "message": "กำลังทำงาน"
+  },
+  "enableFailed": {
+    "message": "ไม่สามารถเปิดใช้ Widevine ได้"
+  },
+  "widevineEnabledRestart": {
+    "message": "เปิดใช้ Widevine แล้ว รีสตาร์ท browser เพื่อโหลด"
+  },
+  "widevineInstalledRestart": {
+    "message": "ติดตั้ง Widevine แล้ว รีสตาร์ท browser เพื่อโหลด"
+  },
+  "internetRequired": {
+    "message": "ต้องมีการเชื่อมต่ออินเทอร์เน็ตเพื่อดาวน์โหลดปลั๊กอิน Widevine"
+  },
+  "downloadFailed": {
+    "message": "ดาวน์โหลด Widevine ไม่สำเร็จ"
+  },
+  "unsupportedArch": {
+    "message": "Google ไม่เผยแพร่ Linux Widevine CDM สำหรับสถาปัตยกรรมนี้"
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "รีสตาร์ท"
+  },
+  "restartingBrowser": {
+    "message": "กำลังรีสตาร์ทเบราว์เซอร์..."
+  },
+  "restartFailed": {
+    "message": "ไม่สามารถรีสตาร์ทเบราว์เซอร์ได้"
+  },
+  "restartUnavailable": {
+    "message": "ไม่สามารถรีสตาร์ทเบราว์เซอร์โดยอัตโนมัติได้"
+  }
+}

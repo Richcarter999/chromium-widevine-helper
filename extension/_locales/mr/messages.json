@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Chromium साठी Widevine CDM डाउनलोड करते आणि चालू/बंद करते."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "स्थिती तपासत आहे..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Widevine सक्षम करा"
+  },
+  "summaryEnabled": {
+    "message": "सक्षम"
+  },
+  "summaryDisabled": {
+    "message": "अक्षम"
+  },
+  "summaryWorking": {
+    "message": "काम सुरू"
+  },
+  "widevineEnabled": {
+    "message": "Widevine सक्षम आहे."
+  },
+  "widevineDisabled": {
+    "message": "Widevine अक्षम आहे."
+  },
+  "enablingWidevine": {
+    "message": "Widevine सक्षम करत आहे..."
+  },
+  "disablingWidevine": {
+    "message": "Widevine अक्षम करत आहे..."
+  },
+  "downloadingWidevine": {
+    "message": "Widevine प्लगइन डाउनलोड होत आहे, कृपया प्रतीक्षा करा"
+  },
+  "extensionContactError": {
+    "message": "Widevine विस्ताराशी संपर्क साधता आला नाही."
+  },
+  "extensionNoResponse": {
+    "message": "Widevine विस्ताराने प्रतिसाद दिला नाही."
+  },
+  "installerContactError": {
+    "message": "Widevine डाउनलोड अयशस्वी झाले."
+  },
+  "installerNoResponse": {
+    "message": "Widevine इंस्टॉलरने प्रतिसाद दिला नाही."
+  },
+  "unknownCommand": {
+    "message": "अज्ञात Widevine आदेश."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin आवश्यक आहे"
+  },
+  "restartTitle": {
+    "message": "browser पुन्हा सुरू करा"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "DRM संरक्षित सामग्री प्ले करण्यासाठी या साइटला Google Widevine plugin आवश्यक आहे"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "DRM संरक्षित सामग्री प्ले करण्यासाठी या साइटला Google Widevine plugin आवश्यक आहे, पण Google Widevine plugin मदतनीस उपलब्ध नाही."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "DRM संरक्षित सामग्री प्ले करण्यासाठी या साइटला Google Widevine plugin आवश्यक आहे. सक्षम केलेले प्लगइन लोड करण्यासाठी browser पुन्हा सुरू करा."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "DRM संरक्षित सामग्री प्ले करण्यासाठी या साइटला Google Widevine plugin आवश्यक आहे. Google Widevine plugin सक्षम करा, मग browser पुन्हा सुरू करा."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "DRM संरक्षित सामग्री प्ले करण्यासाठी या साइटला Google Widevine plugin आवश्यक आहे. प्लगइन डाउनलोड करण्यासाठी Google Widevine plugin सक्षम करा."
+  },
+  "enableButton": {
+    "message": "सक्षम करा"
+  },
+  "dismissButton": {
+    "message": "बंद करा"
+  },
+  "workingButton": {
+    "message": "काम सुरू"
+  },
+  "enableFailed": {
+    "message": "Widevine सक्षम करता आले नाही."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine सक्षम आहे. ते लोड करण्यासाठी browser पुन्हा सुरू करा."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine स्थापित झाले. ते लोड करण्यासाठी browser पुन्हा सुरू करा."
+  },
+  "internetRequired": {
+    "message": "Widevine प्लगइन डाउनलोड करण्यासाठी इंटरनेट कनेक्शन आवश्यक आहे."
+  },
+  "downloadFailed": {
+    "message": "Widevine डाउनलोड अयशस्वी झाले."
+  },
+  "unsupportedArch": {
+    "message": "Google या आर्किटेक्चरसाठी Linux Widevine CDM प्रकाशित करत नाही."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "रीस्टार्ट करा"
+  },
+  "restartingBrowser": {
+    "message": "ब्राउझर रीस्टार्ट होत आहे..."
+  },
+  "restartFailed": {
+    "message": "ब्राउझर रीस्टार्ट करता आला नाही."
+  },
+  "restartUnavailable": {
+    "message": "ब्राउझर आपोआप रीस्टार्ट करता आला नाही."
+  }
+}

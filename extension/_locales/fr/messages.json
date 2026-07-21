@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Télécharge et active ou désactive le CDM Widevine pour Chromium."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Vérification de l'état..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Activer Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Activé"
+  },
+  "summaryDisabled": {
+    "message": "Désactivé"
+  },
+  "summaryWorking": {
+    "message": "En cours"
+  },
+  "widevineEnabled": {
+    "message": "Widevine est activé."
+  },
+  "widevineDisabled": {
+    "message": "Widevine est désactivé."
+  },
+  "enablingWidevine": {
+    "message": "Activation de Widevine..."
+  },
+  "disablingWidevine": {
+    "message": "Désactivation de Widevine..."
+  },
+  "downloadingWidevine": {
+    "message": "Le plugin Widevine est en cours de téléchargement, veuillez patienter"
+  },
+  "extensionContactError": {
+    "message": "Impossible de contacter l'extension Widevine."
+  },
+  "extensionNoResponse": {
+    "message": "L'extension Widevine n'a pas répondu."
+  },
+  "installerContactError": {
+    "message": "Le téléchargement de Widevine a échoué."
+  },
+  "installerNoResponse": {
+    "message": "L'installateur Widevine n'a pas répondu."
+  },
+  "unknownCommand": {
+    "message": "Commande Widevine inconnue."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin requis"
+  },
+  "restartTitle": {
+    "message": "Redémarrez browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "Ce site nécessite Google Widevine plugin pour lire du contenu protégé par DRM"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "Ce site nécessite Google Widevine plugin pour lire du contenu protégé par DRM, mais l'assistant Google Widevine plugin est indisponible."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "Ce site nécessite Google Widevine plugin pour lire du contenu protégé par DRM. Redémarrez browser pour charger le plugin activé."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "Ce site nécessite Google Widevine plugin pour lire du contenu protégé par DRM. Activez Google Widevine plugin, puis redémarrez browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "Ce site nécessite Google Widevine plugin pour lire du contenu protégé par DRM. Activez Google Widevine plugin pour télécharger le plugin."
+  },
+  "enableButton": {
+    "message": "Activer"
+  },
+  "dismissButton": {
+    "message": "Fermer"
+  },
+  "workingButton": {
+    "message": "En cours"
+  },
+  "enableFailed": {
+    "message": "Impossible d'activer Widevine."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine est activé. Redémarrez browser pour le charger."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine a été installé. Redémarrez browser pour le charger."
+  },
+  "internetRequired": {
+    "message": "Une connexion Internet est requise pour télécharger le plugin Widevine."
+  },
+  "downloadFailed": {
+    "message": "Le téléchargement de Widevine a échoué."
+  },
+  "unsupportedArch": {
+    "message": "Google ne publie pas le CDM Widevine Linux pour cette architecture."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Redémarrer"
+  },
+  "restartingBrowser": {
+    "message": "Redémarrage du navigateur..."
+  },
+  "restartFailed": {
+    "message": "Le navigateur n'a pas pu être redémarré."
+  },
+  "restartUnavailable": {
+    "message": "Impossible de redémarrer automatiquement le navigateur."
+  }
+}

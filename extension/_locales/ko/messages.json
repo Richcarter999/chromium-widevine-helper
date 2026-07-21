@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Chromium용 Widevine CDM을 다운로드하고 켜거나 끕니다."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "상태 확인 중..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Widevine 사용"
+  },
+  "summaryEnabled": {
+    "message": "사용 중"
+  },
+  "summaryDisabled": {
+    "message": "사용 안 함"
+  },
+  "summaryWorking": {
+    "message": "작업 중"
+  },
+  "widevineEnabled": {
+    "message": "Widevine이 사용 설정되었습니다."
+  },
+  "widevineDisabled": {
+    "message": "Widevine이 사용 중지되었습니다."
+  },
+  "enablingWidevine": {
+    "message": "Widevine 사용 설정 중..."
+  },
+  "disablingWidevine": {
+    "message": "Widevine 사용 중지 중..."
+  },
+  "downloadingWidevine": {
+    "message": "Widevine 플러그인을 다운로드하는 중입니다. 잠시 기다려 주세요"
+  },
+  "extensionContactError": {
+    "message": "Widevine 확장 프로그램에 연결할 수 없습니다."
+  },
+  "extensionNoResponse": {
+    "message": "Widevine 확장 프로그램이 응답하지 않았습니다."
+  },
+  "installerContactError": {
+    "message": "Widevine 다운로드에 실패했습니다."
+  },
+  "installerNoResponse": {
+    "message": "Widevine 설치 프로그램이 응답하지 않았습니다."
+  },
+  "unknownCommand": {
+    "message": "알 수 없는 Widevine 명령입니다."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin 필요"
+  },
+  "restartTitle": {
+    "message": "browser 다시 시작"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "이 사이트는 DRM 보호 콘텐츠를 재생하려면 Google Widevine plugin이 필요합니다"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "이 사이트는 DRM 보호 콘텐츠를 재생하려면 Google Widevine plugin이 필요하지만 Google Widevine plugin 도우미를 사용할 수 없습니다."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "이 사이트는 DRM 보호 콘텐츠를 재생하려면 Google Widevine plugin이 필요합니다. 사용 설정된 플러그인을 로드하려면 browser을 다시 시작하세요."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "이 사이트는 DRM 보호 콘텐츠를 재생하려면 Google Widevine plugin이 필요합니다. Google Widevine plugin을 사용 설정한 다음 browser을 다시 시작하세요."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "이 사이트는 DRM 보호 콘텐츠를 재생하려면 Google Widevine plugin이 필요합니다. 플러그인을 다운로드하려면 Google Widevine plugin을 사용 설정하세요."
+  },
+  "enableButton": {
+    "message": "사용"
+  },
+  "dismissButton": {
+    "message": "닫기"
+  },
+  "workingButton": {
+    "message": "작업 중"
+  },
+  "enableFailed": {
+    "message": "Widevine을 사용 설정할 수 없습니다."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine이 사용 설정되었습니다. 로드하려면 browser을 다시 시작하세요."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine이 설치되었습니다. 로드하려면 browser을 다시 시작하세요."
+  },
+  "internetRequired": {
+    "message": "Widevine 플러그인을 다운로드하려면 인터넷 연결이 필요합니다."
+  },
+  "downloadFailed": {
+    "message": "Widevine 다운로드에 실패했습니다."
+  },
+  "unsupportedArch": {
+    "message": "Google은 이 아키텍처용 Linux Widevine CDM을 게시하지 않습니다."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "다시 시작"
+  },
+  "restartingBrowser": {
+    "message": "브라우저를 다시 시작하는 중..."
+  },
+  "restartFailed": {
+    "message": "브라우저를 다시 시작할 수 없습니다."
+  },
+  "restartUnavailable": {
+    "message": "브라우저를 자동으로 다시 시작할 수 없습니다."
+  }
+}

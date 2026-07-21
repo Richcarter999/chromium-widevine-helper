@@ -1,0 +1,125 @@
+{
+  "extensionName": {
+    "message": "Chromium Widevine"
+  },
+  "extensionDescription": {
+    "message": "Laadib alla ja lülitab Chromiumi Widevine CDM-i sisse või välja."
+  },
+  "actionTitle": {
+    "message": "Widevine"
+  },
+  "popupTitle": {
+    "message": "Widevine"
+  },
+  "checkingStatus": {
+    "message": "Oleku kontrollimine..."
+  },
+  "toggleEnableWidevine": {
+    "message": "Luba Widevine"
+  },
+  "summaryEnabled": {
+    "message": "Lubatud"
+  },
+  "summaryDisabled": {
+    "message": "Keelatud"
+  },
+  "summaryWorking": {
+    "message": "Töös"
+  },
+  "widevineEnabled": {
+    "message": "Widevine on lubatud."
+  },
+  "widevineDisabled": {
+    "message": "Widevine on keelatud."
+  },
+  "enablingWidevine": {
+    "message": "Widevine’i lubamine..."
+  },
+  "disablingWidevine": {
+    "message": "Widevine’i keelamine..."
+  },
+  "downloadingWidevine": {
+    "message": "Widevine’i pluginat laaditakse alla, palun oodake"
+  },
+  "extensionContactError": {
+    "message": "Widevine’i laiendusega ei saa ühendust."
+  },
+  "extensionNoResponse": {
+    "message": "Widevine’i laiendus ei vastanud."
+  },
+  "installerContactError": {
+    "message": "Widevine’i allalaadimine nurjus."
+  },
+  "installerNoResponse": {
+    "message": "Widevine’i paigaldaja ei vastanud."
+  },
+  "unknownCommand": {
+    "message": "Tundmatu Widevine’i käsk."
+  },
+  "noticeTitle": {
+    "message": "Google Widevine plugin on vajalik"
+  },
+  "restartTitle": {
+    "message": "Taaskäivitage browser"
+  },
+  "siteRequiresWidevineDrm": {
+    "message": "See sait nõuab Google Widevine plugin’i DRM-iga kaitstud sisu esitamiseks"
+  },
+  "siteRequiresWidevineDrmHelperUnavailable": {
+    "message": "See sait nõuab Google Widevine plugin’i DRM-iga kaitstud sisu esitamiseks, kuid Google Widevine plugin’i abiprogramm pole saadaval."
+  },
+  "siteRequiresWidevineDrmRestart": {
+    "message": "See sait nõuab Google Widevine plugin’i DRM-iga kaitstud sisu esitamiseks. Lubatud plugina laadimiseks taaskäivitage browser."
+  },
+  "siteRequiresWidevineDrmInstalledDisabled": {
+    "message": "See sait nõuab Google Widevine plugin’i DRM-iga kaitstud sisu esitamiseks. Lubage Google Widevine plugin ja seejärel taaskäivitage browser."
+  },
+  "siteRequiresWidevineDrmMissing": {
+    "message": "See sait nõuab Google Widevine plugin’i DRM-iga kaitstud sisu esitamiseks. Plugina allalaadimiseks lubage Google Widevine plugin."
+  },
+  "enableButton": {
+    "message": "Luba"
+  },
+  "dismissButton": {
+    "message": "Sulge"
+  },
+  "workingButton": {
+    "message": "Töös"
+  },
+  "enableFailed": {
+    "message": "Widevine’i ei saanud lubada."
+  },
+  "widevineEnabledRestart": {
+    "message": "Widevine on lubatud. Selle laadimiseks taaskäivitage browser."
+  },
+  "widevineInstalledRestart": {
+    "message": "Widevine on paigaldatud. Selle laadimiseks taaskäivitage browser."
+  },
+  "internetRequired": {
+    "message": "Widevine’i plugina allalaadimiseks on vaja internetiühendust."
+  },
+  "downloadFailed": {
+    "message": "Widevine’i allalaadimine nurjus."
+  },
+  "unsupportedArch": {
+    "message": "Google ei avalda selle arhitektuuri jaoks Linux Widevine CDM-i."
+  },
+  "badgeOn": {
+    "message": "ON"
+  },
+  "badgeDrm": {
+    "message": "DRM"
+  },
+  "restartButton": {
+    "message": "Taaskäivita"
+  },
+  "restartingBrowser": {
+    "message": "Brauserit taaskäivitatakse..."
+  },
+  "restartFailed": {
+    "message": "Brauserit ei saanud taaskäivitada."
+  },
+  "restartUnavailable": {
+    "message": "Brauserit ei saanud automaatselt taaskäivitada."
+  }
+}
